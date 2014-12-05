@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Pir</string>
+    <string name="app_name">Partners in Reading</string>
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
@@ -9,5 +9,33 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
+
+
+    <array name="admin_listview_item_titles">
+        <item>Dashboard</item>
+        <item>Manage Users</item>
+        <item>Manage Pairs</item>
+        <item>Pair Partners</item>
+        <item>Reminders</item>
+        <item>Reports</item>
+        <item>Edit Attendance</item>
+        <item>Settings</item>
+    </array>
+
+    <array name="parent_listview_item_titles">
+        <item>My Children</item>
+        <item>Manage Children</item>
+        <item>View Paired Partner</item>
+        <item>Calendar</item>
+    </array>
+
+    <array name="front_desk_listview_item_titles">
+        <item>Dashboard</item>
+        <item>Edit Attendance</item>
+        <item>View Pairs</item>
+        <item>Calendar</item>
+    </array>
+
+
 
 </resources>

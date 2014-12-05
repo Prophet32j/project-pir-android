@@ -1,4 +1,4 @@
-package com.inspireddesigns.pir.activity;
+package com.inspireddesigns.pir.activity.home;
 
 import android.app.Activity;
 
@@ -13,11 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 
-import com.inspireddesigns.pir.fragment.NavigationDrawerFragment;
 import com.inspireddesigns.pir.R;
+import com.inspireddesigns.pir.fragment.home.NavigationDrawerFragment;
 
 
-public class MainActivity extends Activity
+public class HomeActivity extends Activity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
     /**
@@ -69,8 +69,8 @@ public class MainActivity extends Activity
     }
 
     public void restoreActionBar() {
+        //TODO make sure there is an action bar to get (backwards compatibility)
         ActionBar actionBar = getActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setTitle(mTitle);
     }
@@ -139,7 +139,7 @@ public class MainActivity extends Activity
         @Override
         public void onAttach(Activity activity) {
             super.onAttach(activity);
-            ((MainActivity) activity).onSectionAttached(
+            ((HomeActivity) activity).onSectionAttached(
                     getArguments().getInt(ARG_SECTION_NUMBER));
         }
     }
