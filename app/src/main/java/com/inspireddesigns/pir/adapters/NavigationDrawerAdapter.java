@@ -2,9 +2,11 @@ package com.inspireddesigns.pir.adapters;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import com.inspireddesigns.pir.R;
 import com.inspireddesigns.pir.application.ApplicationConstants;
@@ -30,6 +32,11 @@ public class NavigationDrawerAdapter extends BaseAdapter {
     }
 
     @Override
+    public boolean isEnabled(int position) {
+        return true;
+    }
+
+    @Override
     public int getCount() {
         return itemTitles.length;
     }
@@ -47,7 +54,12 @@ public class NavigationDrawerAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         //TODO populate list item with icon and text
-        return null;
+            LayoutInflater inflater = (LayoutInflater) context
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View rowView = inflater.inflate(R.layout.list_item_nav_drawer, parent, false);
+        TextView title = (TextView)rowView.findViewById(R.id.navDrawerItem);
+        title.setText(itemTitles[position]);
+        return rowView;
     }
 
     private void populateItemTitles(){

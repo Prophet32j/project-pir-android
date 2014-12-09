@@ -6,6 +6,8 @@ import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,7 +19,7 @@ import com.inspireddesigns.pir.R;
 import com.inspireddesigns.pir.fragment.home.NavigationDrawerFragment;
 
 
-public class HomeActivity extends Activity
+public class HomeActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
     /**
@@ -39,6 +41,9 @@ public class HomeActivity extends Activity
                 getFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
@@ -48,6 +53,7 @@ public class HomeActivity extends Activity
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
+        //TODO swich on which item was selected and replace with corresponding fragment
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
@@ -70,7 +76,7 @@ public class HomeActivity extends Activity
 
     public void restoreActionBar() {
         //TODO make sure there is an action bar to get (backwards compatibility)
-        ActionBar actionBar = getActionBar();
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setTitle(mTitle);
     }
@@ -107,6 +113,7 @@ public class HomeActivity extends Activity
     /**
      * A placeholder fragment containing a simple view.
      */
+    //TODO remove this and create a new fragment to first go to after login [dashboard?]
     public static class PlaceholderFragment extends Fragment {
         /**
          * The fragment argument representing the section number for this
