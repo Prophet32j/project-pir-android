@@ -7,6 +7,8 @@ import com.inspireddesigns.pir.application.ApplicationController;
 import org.json.JSONObject;
 
 /**
+ * Extended by all classes making a Volley request
+ *
  * Created by Brad Siegel on 1/9/15.
  */
 public abstract class PIRRequestExecutor {
