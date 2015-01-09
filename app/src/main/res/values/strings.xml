@@ -10,7 +10,6 @@
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
 
-
     <array name="admin_listview_item_titles">
         <item>Dashboard</item>
         <item>Manage Users</item>
@@ -21,14 +20,12 @@
         <item>Edit Attendance</item>
         <item>Settings</item>
     </array>
-
     <array name="parent_listview_item_titles">
         <item>My Children</item>
         <item>Manage Children</item>
         <item>View Paired Partner</item>
         <item>Calendar</item>
     </array>
-
     <array name="front_desk_listview_item_titles">
         <item>Dashboard</item>
         <item>Edit Attendance</item>
@@ -36,6 +33,8 @@
         <item>Calendar</item>
     </array>
 
-
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_parent">ParentActivity</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

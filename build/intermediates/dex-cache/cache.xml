@@ -2,18 +2,11 @@
 <items version="2" >
 
     <item
-        jar="/Users/blsiege/PIR_2/project-pir-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.2/classes.jar"
+        jar="/Users/blsiege/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.2.4/95705b2e89a4101f2a82af6b303945755d7f93ab/jackson-core-2.2.4.jar"
         jumboMode="false"
         revision="19.1.0"
-        sha1="7ae2d38807a43b2f2185ff4089a92c790b579e54">
-        <dex dex="/Users/blsiege/PIR_2/project-pir-android/app/build/intermediates/pre-dexed/debug/classes-a1220c318a4671d051213b52aa3a86f50801caa6.jar" />
-    </item>
-    <item
-        jar="/Applications/Android Studio.app/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.2/support-annotations-21.0.2.jar"
-        jumboMode="false"
-        revision="19.1.0"
-        sha1="99373741f99a0556ee293c41e8faa1ca3ae8a4e6">
-        <dex dex="/Users/blsiege/PIR_2/project-pir-android/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.2-e965d389783da2df475e2993528f7a5e9b48af52.jar" />
+        sha1="95705b2e89a4101f2a82af6b303945755d7f93ab">
+        <dex dex="/Users/blsiege/PIR_2/project-pir-android/app/build/intermediates/pre-dexed/debug/jackson-core-2.2.4-0a700ee041e349be475bd06a0968efac8efd77fe.jar" />
     </item>
     <item
         jar="/Users/blsiege/PIR_2/project-pir-android/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.2/classes.jar"
@@ -21,6 +14,41 @@
         revision="19.1.0"
         sha1="d1bf02de1c56d942e7a9d093b8610ba1ef4128e3">
         <dex dex="/Users/blsiege/PIR_2/project-pir-android/app/build/intermediates/pre-dexed/debug/classes-1003b64b71e5a3b034a10b71da13dc9b1ac436f3.jar" />
+    </item>
+    <item
+        jar="/Users/blsiege/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.2.4/9de62c96bb3e17eb909c107f2759c73650b5a8f1/jackson-annotations-2.2.4.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="9de62c96bb3e17eb909c107f2759c73650b5a8f1">
+        <dex dex="/Users/blsiege/PIR_2/project-pir-android/app/build/intermediates/pre-dexed/debug/jackson-annotations-2.2.4-0c6494ad0ff986016fcf9c3eabd1123df7134b8e.jar" />
+    </item>
+    <item
+        jar="/Users/blsiege/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.2.4/906cf5deb56ec1fb3ecbeceb08a1734ce9fed664/jackson-databind-2.2.4.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="906cf5deb56ec1fb3ecbeceb08a1734ce9fed664">
+        <dex dex="/Users/blsiege/PIR_2/project-pir-android/app/build/intermediates/pre-dexed/debug/jackson-databind-2.2.4-7082f809652f5fd6f0f5640815017524a7071776.jar" />
+    </item>
+    <item
+        jar="/Users/blsiege/PIR_2/project-pir-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.2/classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="7ae2d38807a43b2f2185ff4089a92c790b579e54">
+        <dex dex="/Users/blsiege/PIR_2/project-pir-android/app/build/intermediates/pre-dexed/debug/classes-a1220c318a4671d051213b52aa3a86f50801caa6.jar" />
+    </item>
+    <item
+        jar="/Users/blsiege/dev/android-sdk-macosx/extras/android/m2repository/com/android/support/support-annotations/21.0.2/support-annotations-21.0.2.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="99373741f99a0556ee293c41e8faa1ca3ae8a4e6">
+        <dex dex="/Users/blsiege/PIR_2/project-pir-android/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.2-2d76984b39a165627a7c1297bd606a1c6801612e.jar" />
+    </item>
+    <item
+        jar="/Users/blsiege/.gradle/caches/modules-2/files-2.1/com.mcxiaoke.volley/library/1.0.10/8d62b91f5ccb6f7f872313191c016c03bb61a792/library-1.0.10.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="8d62b91f5ccb6f7f872313191c016c03bb61a792">
+        <dex dex="/Users/blsiege/PIR_2/project-pir-android/app/build/intermediates/pre-dexed/debug/library-1.0.10-cd82388c7a7af47131541cf81431a887e333e22c.jar" />
     </item>
     <item
         jar="/Users/blsiege/PIR_2/project-pir-android/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/21.0.2/classes.jar"
