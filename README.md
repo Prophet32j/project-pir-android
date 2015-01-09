@@ -3,4 +3,9 @@ project-pir-android
 
 Android native application
 
-Brad, you need to create a readme file like the other got repos!!!!!!!
+The Volley framework is used for all network requests. The global request queue is maintained within
+ApplicationController which must be used for all requests being made.
+
+Executor classes making requests to the API must extend the PIRRequestExecutor class.
+
+
