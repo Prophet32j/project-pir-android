@@ -3,8 +3,8 @@ package com.inspireddesigns.pir.loader;
 import android.content.Context;
 import android.content.Loader;
 
+import com.inspireddesigns.pir.callback.ParentRequestCallback;
 import com.inspireddesigns.pir.executor.ParentRequestExecutor;
-import com.inspireddesigns.pir.callback.VolleyRequestCallback;
 import com.inspireddesigns.pir.model.Parent;
 
 /**
@@ -12,7 +12,7 @@ import com.inspireddesigns.pir.model.Parent;
  *
  * Created by Brad Siegel on 1/9/15.
  */
-public class ParentLoader extends Loader<Parent> implements VolleyRequestCallback {
+public class ParentLoader extends Loader<Parent> implements ParentRequestCallback {
 
     private Context context;
 
@@ -30,8 +30,8 @@ public class ParentLoader extends Loader<Parent> implements VolleyRequestCallbac
     @Override
     protected void onStartLoading() {
         super.onStartLoading();
-        ParentRequestExecutor executor = new ParentRequestExecutor(getContext(), this);
-        executor.retrieveParent();
+        ParentRequestExecutor executor = new ParentRequestExecutor(this);
+        executor.executeRequest();
     }
 
     @Override

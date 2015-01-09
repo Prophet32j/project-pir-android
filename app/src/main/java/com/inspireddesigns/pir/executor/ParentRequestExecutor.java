@@ -1,14 +1,10 @@
 package com.inspireddesigns.pir.executor;
 
-import android.content.Context;
-
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-import com.inspireddesigns.pir.callback.VolleyRequestCallback;
+import com.inspireddesigns.pir.callback.ParentRequestCallback;
 import com.inspireddesigns.pir.model.Parent;
 
 import org.json.JSONObject;
@@ -20,35 +16,33 @@ import org.json.JSONObject;
  * <p/>
  * Created by Brad Siegel on 1/9/15.
  */
-public class ParentRequestExecutor {
+public class ParentRequestExecutor extends PIRRequestExecutor {
 
-    private Context context;
-    private VolleyRequestCallback mCallback;
-    //TODO get request queue from ApplicationController
-    private RequestQueue queue;
+    private ParentRequestCallback mCallback;
     private JsonObjectRequest request;
-    //TODO this url is for testing purposes only
+
+    //this url is for testing purposes only
     private String url = "https://gist.githubusercontent.com/Prophet32j/d021dd8bb74956200c36/raw/7f770304d01280c98aab33817231c7b06c765e9b/gistfile1.txt";
 
 
     //TODO will need to add parameters in order to request a specific parent
-    public ParentRequestExecutor(Context context, VolleyRequestCallback callback) {
-        this.context = context;
+    public ParentRequestExecutor(ParentRequestCallback callback) {
         this.mCallback = callback;
     }
 
-    public void retrieveParent(){
-        queue = Volley.newRequestQueue(context);
+    @Override
+    public void executeRequest(){
         request = createRequest();
-        queue.add(request);
+        getApplicationController().addToRequestQueue(request);
     }
 
-    private JsonObjectRequest createRequest() {
+    @Override
+    protected JsonObjectRequest createRequest() {
         return new JsonObjectRequest(Request.Method.GET,url, null, getResponseListener(), getErrorListener());
     }
 
-
-    private Response.Listener<JSONObject> getResponseListener() {
+    @Override
+    protected Response.Listener<JSONObject> getResponseListener() {
         return new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -61,13 +55,14 @@ public class ParentRequestExecutor {
 //                } catch (IOException e) {
 //                    e.printStackTrace();
 //                }
-                mCallback.onVolleyResponseReceived(new Parent("ID:555##7890 + //" + response.toString(), "blsiege@gmail.com", null, true, "1/2/15", "1/1/15"));
+                mCallback.onVolleyResponseReceived(new Parent("Joshua Hardy" + response.toString(), "blsiege@gmail.com", null, true, "1/2/15", "1/1/15"));
 
             }
         };
     }
 
-    private Response.ErrorListener getErrorListener() {
+    @Override
+    protected Response.ErrorListener getErrorListener() {
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
