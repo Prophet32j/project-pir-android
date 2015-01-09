@@ -5,4 +5,4 @@
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" android:showAsAction="never" />
 </menu>
-<!-- From: file:/Users/blsiege/dev/Pir/app/src/main/res/menu/main.xml -->
+<!-- From: file:/Users/blsiege/PIR_2/project-pir-android/app/src/main/res/menu/main.xml -->

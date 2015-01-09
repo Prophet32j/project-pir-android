@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="pir.inspireddesigns.com.pir.test">
+    package="com.inspireddesigns.pir.test">
 
-    <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="19" />
+    <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="21" />
 
     <application>
         <uses-library android:name="android.test.runner" />
     </application>
 
     <instrumentation android:name="android.test.InstrumentationTestRunner"
-                     android:targetPackage="pir.inspireddesigns.com.pir"
+                     android:targetPackage="com.inspireddesigns.pir"
                      android:handleProfiling="false"
                      android:functionalTest="false"
-                     android:label="Tests for pir.inspireddesigns.com.pir"/>
+                     android:label="Tests for com.inspireddesigns.pir"/>
 </manifest>

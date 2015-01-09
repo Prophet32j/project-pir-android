@@ -1,11 +1,11 @@
 package com.inspireddesigns.pir.activity.home;
 
 import android.app.Activity;
-
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -13,7 +13,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.v4.widget.DrawerLayout;
 
 import com.inspireddesigns.pir.R;
 import com.inspireddesigns.pir.fragment.home.NavigationDrawerFragment;
@@ -41,7 +40,7 @@ public class HomeActivity extends ActionBarActivity
                 getFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
         setSupportActionBar(toolbar);
 
         // Set up the drawer.
@@ -52,11 +51,26 @@ public class HomeActivity extends ActionBarActivity
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
-        // update the main content by replacing fragments
-        //TODO swich on which item was selected and replace with corresponding fragment
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        Fragment fragment = null;
+        switch(position){
+            case 0:
+//                Log.i("INFO", "Admin Dashboard Fragment");
+//                fragment = AdminDashboardFragment.newInstance();
+//                transaction.replace(R.id.container, fragment);
+//                transaction.addToBackStack(null);
+//                transaction.commit();
+                break;
+
+        }
+
+        if(fragment == null){
+            fragment = PlaceholderFragment.newInstance(position + 1);
+        }
+
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+                .replace(R.id.container, fragment)
                 .commit();
     }
 
@@ -75,10 +89,10 @@ public class HomeActivity extends ActionBarActivity
     }
 
     public void restoreActionBar() {
-        //TODO make sure there is an action bar to get (backwards compatibility)
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowTitleEnabled(true);
-        actionBar.setTitle(mTitle);
+        //TODO set tittle back to current page
+        actionBar.setTitle("Dashboard");
     }
 
 

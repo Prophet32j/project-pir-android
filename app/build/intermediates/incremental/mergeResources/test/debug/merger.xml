@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/Users/blsiege/dev/Pir/app/src/androidTest/res"/><source path="/Users/blsiege/dev/Pir/app/build/generated/res/rs/test/debug"/><source path="/Users/blsiege/dev/Pir/app/build/generated/res/generated/test/debug"/></dataSet><mergedItems/></merger>
+<merger version="3"><dataSet config="main"><source path="/Users/blsiege/PIR_2/project-pir-android/app/src/androidTest/res"/><source path="/Users/blsiege/PIR_2/project-pir-android/app/build/generated/res/rs/test/debug"/><source path="/Users/blsiege/PIR_2/project-pir-android/app/build/generated/res/generated/test/debug"/></dataSet><mergedItems/></merger>
