@@ -14,12 +14,13 @@ import com.inspireddesigns.pir.model.Parent;
  */
 public class ParentLoader extends Loader<Parent> implements ParentRequestCallback {
 
-    private Context context;
+    private ParentRequestExecutor executor;
 
 
     public ParentLoader(Context context) {
         super(context);
-        this.context = context;
+        //TODO second parameter (parentId) derived from login
+        executor = new ParentRequestExecutor(this, 1);
     }
 
     @Override
@@ -30,14 +31,13 @@ public class ParentLoader extends Loader<Parent> implements ParentRequestCallbac
     @Override
     protected void onStartLoading() {
         super.onStartLoading();
-        ParentRequestExecutor executor = new ParentRequestExecutor(this);
         executor.executeRequest();
     }
 
     @Override
     protected void onStopLoading() {
         super.onStopLoading();
-        //TODO cancel volley request
+        executor.cancelRequest();
     }
 
     @Override

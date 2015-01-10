@@ -20,14 +20,15 @@ public class ParentRequestExecutor extends PIRRequestExecutor {
 
     private ParentRequestCallback mCallback;
     private JsonObjectRequest request;
+    private int parentId;
 
     //this url is for testing purposes only
     private String url = "https://gist.githubusercontent.com/Prophet32j/d021dd8bb74956200c36/raw/7f770304d01280c98aab33817231c7b06c765e9b/gistfile1.txt";
 
 
-    //TODO will need to add parameters in order to request a specific parent
-    public ParentRequestExecutor(ParentRequestCallback callback) {
+    public ParentRequestExecutor(ParentRequestCallback callback, int parentId) {
         this.mCallback = callback;
+        this.parentId = parentId;
     }
 
     @Override
@@ -55,8 +56,7 @@ public class ParentRequestExecutor extends PIRRequestExecutor {
 //                } catch (IOException e) {
 //                    e.printStackTrace();
 //                }
-                mCallback.onVolleyResponseReceived(new Parent("Joshua Hardy" + response.toString(), "blsiege@gmail.com", null, true, "1/2/15", "1/1/15"));
-
+                mCallback.onVolleyResponseReceived(new Parent("Brad Seagull \n" + response.toString(), "blsiege@gmail.com", null, true, "1/2/15", "1/1/15"));
             }
         };
     }
@@ -70,5 +70,11 @@ public class ParentRequestExecutor extends PIRRequestExecutor {
             }
         };
     }
+
+    @Override
+    public void cancelRequest() {
+        cancelRequest(request);
+    }
+
 
 }
