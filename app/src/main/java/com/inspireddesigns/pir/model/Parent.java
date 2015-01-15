@@ -1,12 +1,12 @@
 package com.inspireddesigns.pir.model;
 
 /**
- * Created by blsiege on 1/9/15.
+ * Created by Brad Siegel on 1/9/15.
  */
 public class Parent {
     private String _id;
     private String email;
-    private Object[] readers;
+    private Reader[] readers;
     private boolean activated;
     private String last_login;
     private String created;
@@ -14,7 +14,7 @@ public class Parent {
     public Parent() {
     }
 
-    public Parent(String _id, String email, Object[] readers, boolean activated, String last_login, String created) {
+    public Parent(String _id, String email, Reader[] readers, boolean activated, String last_login, String created) {
         this._id = _id;
         this.email = email;
         this.readers = readers;
@@ -43,7 +43,7 @@ public class Parent {
         return readers;
     }
 
-    public void setReaders(Object[] readers) {
+    public void setReaders(Reader[] readers) {
         this.readers = readers;
     }
 

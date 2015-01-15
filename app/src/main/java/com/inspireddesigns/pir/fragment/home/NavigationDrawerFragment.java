@@ -24,8 +24,12 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.inspireddesigns.pir.R;
-import com.inspireddesigns.pir.adapters.NavigationDrawerAdapter;
+import com.inspireddesigns.pir.adapter.NavigationDrawerAdapter;
 import com.inspireddesigns.pir.application.ApplicationConstants;
+import com.inspireddesigns.pir.model.DrawerItem;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.
@@ -103,8 +107,9 @@ public class NavigationDrawerFragment extends Fragment {
             }
         });
 
-        mDrawerListView.setAdapter(new NavigationDrawerAdapter(getActivity(), ApplicationConstants.USER_ADMIN));
-                mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
+        //TODO change this after implementing RecyclerView
+//        mDrawerListView.setAdapter(new NavigationDrawerAdapter(getActivity(), ApplicationConstants.USER_ADMIN));
+//                mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         return mDrawerListView;
     }
 

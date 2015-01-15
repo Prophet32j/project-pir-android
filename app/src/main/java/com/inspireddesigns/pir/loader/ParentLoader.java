@@ -2,7 +2,10 @@ package com.inspireddesigns.pir.loader;
 
 import android.content.Context;
 import android.content.Loader;
+import android.util.Log;
 
+import com.android.volley.VolleyLog;
+import com.inspireddesigns.pir.application.ApplicationController;
 import com.inspireddesigns.pir.callback.ParentRequestCallback;
 import com.inspireddesigns.pir.executor.ParentRequestExecutor;
 import com.inspireddesigns.pir.model.Parent;
@@ -17,10 +20,9 @@ public class ParentLoader extends Loader<Parent> implements ParentRequestCallbac
     private ParentRequestExecutor executor;
 
 
-    public ParentLoader(Context context) {
+    public ParentLoader(Context context, int parentId) {
         super(context);
-        //TODO second parameter (parentId) derived from login
-        executor = new ParentRequestExecutor(this, 1);
+        executor = new ParentRequestExecutor(this, parentId);
     }
 
     @Override
@@ -32,12 +34,14 @@ public class ParentLoader extends Loader<Parent> implements ParentRequestCallbac
     protected void onStartLoading() {
         super.onStartLoading();
         executor.executeRequest();
+        Log.i(ApplicationController.TAG, getClass().getName() + " onStartLoading");
     }
 
     @Override
     protected void onStopLoading() {
         super.onStopLoading();
         executor.cancelRequest();
+        Log.i(ApplicationController.TAG, getClass().getName() + " onStopLoading");
     }
 
     @Override

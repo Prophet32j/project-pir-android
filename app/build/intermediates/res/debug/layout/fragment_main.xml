@@ -16,6 +16,7 @@
         android:id="@+id/textView2"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
     </android.support.v4.widget.DrawerLayout>
 <!-- From: file:/Users/blsiege/PIR_2/project-pir-android/app/src/main/res/layout/fragment_main.xml -->

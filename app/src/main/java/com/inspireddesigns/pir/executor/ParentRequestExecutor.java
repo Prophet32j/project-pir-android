@@ -1,9 +1,12 @@
 package com.inspireddesigns.pir.executor;
 
+import android.util.Log;
+
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.inspireddesigns.pir.application.ApplicationController;
 import com.inspireddesigns.pir.callback.ParentRequestCallback;
 import com.inspireddesigns.pir.model.Parent;
 
@@ -21,25 +24,24 @@ public class ParentRequestExecutor extends PIRRequestExecutor {
     private ParentRequestCallback mCallback;
     private JsonObjectRequest request;
     private int parentId;
-
-    //this url is for testing purposes only
-    private String url = "https://gist.githubusercontent.com/Prophet32j/d021dd8bb74956200c36/raw/7f770304d01280c98aab33817231c7b06c765e9b/gistfile1.txt";
-
+    private String url;
+    private static final String QUERY_PREFIX = "/parents?id=";
 
     public ParentRequestExecutor(ParentRequestCallback callback, int parentId) {
         this.mCallback = callback;
         this.parentId = parentId;
+        this.url = QUERY_PREFIX + parentId;
+    }
+
+    private JsonObjectRequest createRequest() {
+        return new JsonObjectRequest(Request.Method.GET,url, null, getResponseListener(), getErrorListener());
     }
 
     @Override
     public void executeRequest(){
         request = createRequest();
         getApplicationController().addToRequestQueue(request);
-    }
-
-    @Override
-    protected JsonObjectRequest createRequest() {
-        return new JsonObjectRequest(Request.Method.GET,url, null, getResponseListener(), getErrorListener());
+        Log.i(ApplicationController.TAG, getClass().getName() + " executing parent request: " + QUERY_PREFIX + parentId);
     }
 
     @Override
@@ -56,6 +58,7 @@ public class ParentRequestExecutor extends PIRRequestExecutor {
 //                } catch (IOException e) {
 //                    e.printStackTrace();
 //                }
+                Log.i(ApplicationController.TAG, getClass().getName() + " parent request: JSON response received");
                 mCallback.onVolleyResponseReceived(new Parent("Brad Seagull \n" + response.toString(), "blsiege@gmail.com", null, true, "1/2/15", "1/1/15"));
             }
         };
@@ -66,7 +69,7 @@ public class ParentRequestExecutor extends PIRRequestExecutor {
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                //TODO handle error
+                //TODO handle error...add method to ParentRequestCallback ?
             }
         };
     }
@@ -75,6 +78,5 @@ public class ParentRequestExecutor extends PIRRequestExecutor {
     public void cancelRequest() {
         cancelRequest(request);
     }
-
 
 }

@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.inspireddesigns.pir.R;
+import com.inspireddesigns.pir.application.ApplicationConstants;
 import com.inspireddesigns.pir.loader.ParentLoader;
 import com.inspireddesigns.pir.model.Parent;
 
@@ -20,21 +21,17 @@ import com.inspireddesigns.pir.model.Parent;
 public class ParentDashboardFragment extends Fragment implements LoaderManager.LoaderCallbacks<Parent> {
 
     private View view;
-    private Parent parent;
     private TextView textViewParentId;
+    private int parentId;
 
-    /**
-     * Use this factory method to create a new instance of this fragment
-     *
-     * @return A new instance of fragment ParentDashboardFragment.
-     */
+    public ParentDashboardFragment() {
+        parentId = getArguments().getInt(ApplicationConstants.KEY_LOGGED_IN_PARENT_ID);
+    }
+
+
     public static ParentDashboardFragment newInstance() {
         ParentDashboardFragment fragment = new ParentDashboardFragment();
         return fragment;
-    }
-
-    public ParentDashboardFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -59,7 +56,7 @@ public class ParentDashboardFragment extends Fragment implements LoaderManager.L
 
     @Override
     public Loader<Parent> onCreateLoader(int i, Bundle bundle) {
-        return new ParentLoader(getActivity());
+        return new ParentLoader(getActivity(), parentId);
     }
 
     @Override
