@@ -14,15 +14,15 @@ import com.inspireddesigns.pir.R;
  *
  * If the parent does not have at least one child registered, they will be prompted to add a child.
  */
-public class ManageChildrenFragment extends Fragment {
+public class ManageReaderFragment extends Fragment {
 
 
-    public static ManageChildrenFragment newInstance() {
-        return new ManageChildrenFragment();
+    public static ManageReaderFragment newInstance() {
+        return new ManageReaderFragment();
 
     }
 
-    public ManageChildrenFragment() {
+    public ManageReaderFragment() {
 
     }
 
