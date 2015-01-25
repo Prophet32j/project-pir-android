@@ -75,6 +75,7 @@ public class PIRDatabaseHelper extends SQLiteOpenHelper {
 
     /**
      * Queries the parent table based on the parentId that is passed in.
+     * Should only be called from parent user type.
      *
      * @param parentId id of the parent
      * @return the Parent object with the corresponding id
@@ -128,9 +129,6 @@ public class PIRDatabaseHelper extends SQLiteOpenHelper {
         values.put(EMAIL_COL, parent.getEmail());
         //TODO save readers
         //values.put(READERS_COL, parent.getReaders());
-        values.put(ACTIVATED_COL, parent.isActivated());
-        values.put(LAST_LOGIN_COL, parent.getLast_login());
-        values.put(CREATED_COL, parent.getCreated());
 
         result = db.insert(PARENT_TABLE, null, values);
 

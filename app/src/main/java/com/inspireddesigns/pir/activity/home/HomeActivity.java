@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.inspireddesigns.pir.R;
+import com.inspireddesigns.pir.application.PIRDatabaseHelper;
 import com.inspireddesigns.pir.fragment.home.NavigationDrawerFragment;
 
 

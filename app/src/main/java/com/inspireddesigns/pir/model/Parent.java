@@ -1,26 +1,19 @@
 package com.inspireddesigns.pir.model;
 
+import java.util.List;
+
 /**
  * Created by Brad Siegel on 1/9/15.
+ *
  */
 public class Parent {
     private String _id;
     private String email;
-    private Reader[] readers;
-    private boolean activated;
-    private String last_login;
-    private String created;
+    private List<Reader> readers;
+    private String first_name;
+    private String last_name;
 
     public Parent() {
-    }
-
-    public Parent(String _id, String email, Reader[] readers, boolean activated, String last_login, String created) {
-        this._id = _id;
-        this.email = email;
-        this.readers = readers;
-        this.activated = activated;
-        this.last_login = last_login;
-        this.created = created;
     }
 
     public String get_id() {
@@ -39,35 +32,27 @@ public class Parent {
         this.email = email;
     }
 
-    public Object[] getReaders() {
+    public List<Reader> getReaders() {
         return readers;
     }
 
-    public void setReaders(Reader[] readers) {
+    public void setReaders(List<Reader> readers) {
         this.readers = readers;
     }
 
-    public boolean isActivated() {
-        return activated;
+    public String getFirst_name() {
+        return first_name;
     }
 
-    public void setActivated(boolean activated) {
-        this.activated = activated;
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
     }
 
-    public String getLast_login() {
-        return last_login;
+    public String getLast_name() {
+        return last_name;
     }
 
-    public void setLast_login(String last_login) {
-        this.last_login = last_login;
-    }
-
-    public String getCreated() {
-        return created;
-    }
-
-    public void setCreated(String created) {
-        this.created = created;
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
     }
 }

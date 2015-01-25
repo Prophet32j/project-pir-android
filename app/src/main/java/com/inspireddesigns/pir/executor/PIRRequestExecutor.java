@@ -18,18 +18,14 @@ public abstract class PIRRequestExecutor {
         return ApplicationController.getInstance();
     }
 
-    protected<T> void cancelRequest(Request<T> request){
-        request.cancel();
-    }
+    protected abstract Response.Listener<JSONObject> getGETResponseListener();
 
-    public abstract void executeRequest();
+    protected abstract Response.Listener<JSONObject> getPutResponseListener();
 
-    protected abstract Response.Listener<JSONObject> getResponseListener();
+    protected abstract Response.Listener<JSONObject> getDeleteResponseListener();
+
+    protected abstract Response.Listener<JSONObject> getPostResponseListener();
 
     protected abstract Response.ErrorListener getErrorListener();
-
-    public abstract void cancelRequest();
-
-
 
 }

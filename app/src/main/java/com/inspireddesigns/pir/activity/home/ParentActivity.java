@@ -6,19 +6,26 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.inspireddesigns.pir.R;
-import com.inspireddesigns.pir.fragment.home.ParentDashboardFragment;
+import com.inspireddesigns.pir.application.ApplicationConstants;
+import com.inspireddesigns.pir.fragment.parent.ParentDashboardFragment;
 
 public class ParentActivity extends ActionBarActivity {
+
+    private int parentId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parent);
+        parentId = getIntent().getExtras().getInt(ApplicationConstants.KEY_LOGGED_IN_PARENT_ID);
         setupFragment();
     }
 
     private void setupFragment() {
         ParentDashboardFragment fragment = ParentDashboardFragment.newInstance();
+        Bundle args = new Bundle();
+        args.putInt(ApplicationConstants.KEY_LOGGED_IN_PARENT_ID, parentId);
+        fragment.setArguments(args);
         getFragmentManager().beginTransaction().replace(R.id.content, fragment).commit();
     }
 

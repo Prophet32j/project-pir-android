@@ -37,4 +37,11 @@
     <string name="title_activity_parent">ParentActivity</string>
     <string name="hello_world">Hello world!</string>
 
+
+    <!--SQLite database creation -->
+    <string name="create_table_parents"/>
+
+    <!-- Request queries -->
+    <string name="query_parent_request_prefix">/parents?id=</string>
+
 </resources>

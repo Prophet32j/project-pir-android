@@ -4,6 +4,8 @@ package com.inspireddesigns.pir.fragment.home;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
+import android.app.LoaderManager;
+import android.content.Loader;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
@@ -12,6 +14,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -19,24 +22,23 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.inspireddesigns.pir.R;
 import com.inspireddesigns.pir.adapter.NavigationDrawerAdapter;
 import com.inspireddesigns.pir.application.ApplicationConstants;
 import com.inspireddesigns.pir.model.DrawerItem;
+import com.inspireddesigns.pir.model.Parent;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.
  * See the <a href="https://developer.android.com/design/patterns/navigation-drawer.html#Interaction">
  * design guidelines</a> for a complete explanation of the behaviors implemented here.
  */
-public class NavigationDrawerFragment extends Fragment {
+public class NavigationDrawerFragment extends Fragment implements LoaderManager.LoaderCallbacks<Parent> {
 
     /**
      * Remember the position of the selected item.
@@ -60,9 +62,8 @@ public class NavigationDrawerFragment extends Fragment {
     private ActionBarDrawerToggle mDrawerToggle;
 
     private DrawerLayout mDrawerLayout;
-    private ListView mDrawerListView;
+    private RecyclerView mRecyclerView;
     private View mFragmentContainerView;
-
     private int mCurrentSelectedPosition = 0;
     private boolean mFromSavedInstanceState;
     private boolean mUserLearnedDrawer;
@@ -86,6 +87,8 @@ public class NavigationDrawerFragment extends Fragment {
 
         // Select either the default item (0) or the last selected item.
         selectItem(mCurrentSelectedPosition);
+
+        ParentLoader loader = new ParentLoader(getActivity(), 1, Request.Method.GET);
     }
 
     @Override
@@ -98,19 +101,18 @@ public class NavigationDrawerFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        mDrawerListView = (ListView) inflater.inflate(
+        mRecyclerView = (RecyclerView) inflater.inflate(
                 R.layout.fragment_navigation_drawer, container, false);
-        mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                selectItem(position);
-            }
-        });
+//        mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                selectItem(position);
+//            }
+//        });
 
         //TODO change this after implementing RecyclerView
-//        mDrawerListView.setAdapter(new NavigationDrawerAdapter(getActivity(), ApplicationConstants.USER_ADMIN));
-//                mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
-        return mDrawerListView;
+        mRecyclerView.setAdapter(new NavigationDrawerAdapter(new ArrayList<DrawerItem>(), ApplicationConstants.USER_PARENT));
+        return mRecyclerView;
     }
 
     public boolean isDrawerOpen() {
@@ -194,9 +196,9 @@ public class NavigationDrawerFragment extends Fragment {
 
     private void selectItem(int position) {
         mCurrentSelectedPosition = position;
-        if (mDrawerListView != null) {
-            mDrawerListView.setItemChecked(position, true);
-        }
+//        if (mRecyclerView != null) {
+//            mDrawerListView.setItemChecked(position, true);
+//        }
         if (mDrawerLayout != null) {
             mDrawerLayout.closeDrawer(mFragmentContainerView);
         }
@@ -272,6 +274,21 @@ public class NavigationDrawerFragment extends Fragment {
 
     private ActionBar getActionBar() {
         return getActivity().getActionBar();
+    }
+
+    @Override
+    public Loader<Parent> onCreateLoader(int i, Bundle bundle) {
+        return new ParentLoader(getActivity(), 1, Request.Method.DELETE);
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Parent> parentLoader, Parent parent) {
+
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Parent> parentLoader) {
+
     }
 
     /**

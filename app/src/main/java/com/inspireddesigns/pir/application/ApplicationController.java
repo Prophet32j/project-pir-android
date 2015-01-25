@@ -10,6 +10,7 @@ import com.android.volley.toolbox.Volley;
 /**
  * Used to maintain global application state.
  * Centralized location for Volley request queue
+ *
  * Created by Brad Siegel on 1/9/15.
  */
 public class ApplicationController extends Application{
@@ -79,4 +80,5 @@ public class ApplicationController extends Application{
             requestQueue.cancelAll(tag);
         }
     }
+
 }
