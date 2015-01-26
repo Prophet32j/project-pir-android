@@ -44,6 +44,13 @@
         <dex dex="/Users/blsiege/PIR_2/project-pir-android/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.2-2d76984b39a165627a7c1297bd606a1c6801612e.jar" />
     </item>
     <item
+        jar="/Users/blsiege/PIR_2/project-pir-android/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/21.0.2/classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="4796f18d3750bf2bfa078407a94a7f9db35b440d">
+        <dex dex="/Users/blsiege/PIR_2/project-pir-android/app/build/intermediates/pre-dexed/debug/classes-2ae9738a9bc31fde0b48c3a92ec341459c4ae1e9.jar" />
+    </item>
+    <item
         jar="/Users/blsiege/.gradle/caches/modules-2/files-2.1/com.mcxiaoke.volley/library/1.0.10/8d62b91f5ccb6f7f872313191c016c03bb61a792/library-1.0.10.jar"
         jumboMode="false"
         revision="19.1.0"

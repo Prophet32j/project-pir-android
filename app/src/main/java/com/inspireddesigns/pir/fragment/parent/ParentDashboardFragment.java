@@ -32,6 +32,7 @@ public class ParentDashboardFragment extends Fragment {
     private String queryString;
     private TextView textViewParentId;
 
+
     public ParentDashboardFragment() {
 
     }

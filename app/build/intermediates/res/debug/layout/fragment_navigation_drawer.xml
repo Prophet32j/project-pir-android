@@ -1,6 +1,5 @@
-<ListView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:choiceMode="singleChoice"
-    android:divider="#F2F2F2" android:dividerHeight="2px"
-    android:background="@android:color/white" tools:context=".NavigationDrawerFragment" />
+<android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/navDrawerRecyclerView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
 <!-- From: file:/Users/blsiege/PIR_2/project-pir-android/app/src/main/res/layout/fragment_navigation_drawer.xml -->

@@ -38,7 +38,7 @@ import java.util.ArrayList;
  * See the <a href="https://developer.android.com/design/patterns/navigation-drawer.html#Interaction">
  * design guidelines</a> for a complete explanation of the behaviors implemented here.
  */
-public class NavigationDrawerFragment extends Fragment implements LoaderManager.LoaderCallbacks<Parent> {
+public class NavigationDrawerFragment extends Fragment {
 
     /**
      * Remember the position of the selected item.
@@ -88,7 +88,6 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager.
         // Select either the default item (0) or the last selected item.
         selectItem(mCurrentSelectedPosition);
 
-        ParentLoader loader = new ParentLoader(getActivity(), 1, Request.Method.GET);
     }
 
     @Override
@@ -276,20 +275,6 @@ public class NavigationDrawerFragment extends Fragment implements LoaderManager.
         return getActivity().getActionBar();
     }
 
-    @Override
-    public Loader<Parent> onCreateLoader(int i, Bundle bundle) {
-        return new ParentLoader(getActivity(), 1, Request.Method.DELETE);
-    }
-
-    @Override
-    public void onLoadFinished(Loader<Parent> parentLoader, Parent parent) {
-
-    }
-
-    @Override
-    public void onLoaderReset(Loader<Parent> parentLoader) {
-
-    }
 
     /**
      * Callbacks interface that all activities using this fragment must implement.

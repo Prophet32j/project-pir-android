@@ -44,4 +44,10 @@
     <!-- Request queries -->
     <string name="query_parent_request_prefix">/parents?id=</string>
 
+
+    <string-array name="user_type_choices">
+        <item>Volunteer</item>
+        <item>Parent</item>
+    </string-array>
+
 </resources>

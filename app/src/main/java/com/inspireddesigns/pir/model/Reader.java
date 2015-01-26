@@ -7,6 +7,7 @@ import java.util.Map;
  */
 public class Reader {
     //TODO create the rest of this class
+    private String _id;
     private String parent;
     private String first_name;
     private String last_name;
@@ -27,6 +28,14 @@ public class Reader {
 
     public String getParent() {
         return parent;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public void setParent(String parent) {

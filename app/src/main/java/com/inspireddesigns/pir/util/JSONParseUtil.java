@@ -2,10 +2,14 @@ package com.inspireddesigns.pir.util;
 
 import android.util.Log;
 
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.DeserializationConfig;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.inspireddesigns.pir.application.ApplicationController;
 import com.inspireddesigns.pir.model.Parent;
 import com.inspireddesigns.pir.model.Reader;
+import com.inspireddesigns.pir.model.User;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,7 +24,7 @@ import java.util.Map;
 /**
  * <p/>
  * Utility class used to parse JSON responses into Java objects.
- *
+ * <p/>
  * Created by Brad Siegel on 1/24/15.
  */
 public class JSONParseUtil {
@@ -80,4 +84,20 @@ public class JSONParseUtil {
         }
         return availability;
     }
+
+    public static User parseUser(JSONObject response) {
+        ObjectMapper mapper = null;
+        User user = null;
+        try {
+            mapper = new ObjectMapper();
+            mapper.configure(DeserializationFeature.UNWRAP_ROOT_VALUE, true);
+            user = mapper.readValue(response.toString(), User.class);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return user;
+    }
 }
+
+
