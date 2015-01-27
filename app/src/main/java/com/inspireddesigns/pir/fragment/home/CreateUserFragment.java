@@ -1,7 +1,7 @@
 package com.inspireddesigns.pir.fragment.home;
 
 
-import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,28 +13,24 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.inspireddesigns.pir.R;
 import com.inspireddesigns.pir.application.ApplicationController;
+import com.inspireddesigns.pir.fragment.parent.ParentRegistrationFragment;
 import com.inspireddesigns.pir.model.User;
 import com.inspireddesigns.pir.util.JSONParseUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Displays first screen in the registration flow. This is an unauthenticated screen.
  * The user is required to enter their email, password, and the account type they are registering for.
  */
-public class CreateUserFragment extends Fragment {
+public class CreateUserFragment extends PIRBaseFragment {
 
     private User mUser;
     private View view;
@@ -44,6 +40,11 @@ public class CreateUserFragment extends Fragment {
     private Spinner mUserTypeSpinner;
     private Button createAccountButton;
     private final static String POST_URL = "http://pir-node.herokuapp.com/users";
+    private ProgressDialog dialog;
+
+    private static final String PARAM_EMAIL = "email";
+    private static final String PARAM_PASSWORD = "password";
+    private static final String PARAM_TYPE = "type";
 
     public static CreateUserFragment newInstance() {
         return new CreateUserFragment();
@@ -69,11 +70,14 @@ public class CreateUserFragment extends Fragment {
         mUserTypeSpinner = (Spinner) view.findViewById(R.id.spinner_user_type);
         mPostResponse = (TextView) view.findViewById(R.id.tv_postResponse);
         createAccountButton = (Button) view.findViewById(R.id.createAccountButton);
+        dialog = new ProgressDialog(getActivity());
 
         createAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 executePostRequest();
+                dialog.setMessage(getResources().getString(R.string.loading));
+                dialog.show();
             }
         });
 
@@ -93,10 +97,10 @@ public class CreateUserFragment extends Fragment {
     private void executePostRequest() {
         JSONObject params = new JSONObject();
         try {
-            params.put("email", mEmailTextView.getText().toString());
-            params.put("password", mPasswordTextView.getText().toString());
-            char accountType = mUserTypeSpinner.getSelectedItem().toString().equals("Volunteer") ? 'v' : 'p';
-            params.put("type", String.valueOf(accountType));
+            params.put(PARAM_EMAIL, mEmailTextView.getText().toString());
+            params.put(PARAM_PASSWORD, mPasswordTextView.getText().toString());
+            char accountType = mUserTypeSpinner.getSelectedItem().toString().equals(getResources().getString(R.string.volunteer)) ? 'v' : 'p';
+            params.put(PARAM_TYPE, String.valueOf(accountType));
 
 
         } catch (JSONException e) {
@@ -107,14 +111,26 @@ public class CreateUserFragment extends Fragment {
                     @Override
                     public void onResponse(JSONObject response) {
                         mUser = JSONParseUtil.parseUser(response);
+                        //Used for testing
                         mPostResponse.setText(mUser.get_id() + "\n" + mUser.getEmail() + "\n" + mUser.getPassword() + "\n" + mUser.getType());
-                        Log.d("Response", response.toString());
+                        if (dialog.isShowing()) {
+                            dialog.dismiss();
+                        }
+                        Log.d(ApplicationController.TAG, "Response from POST User: " + response.toString());
+
+                        ParentRegistrationFragment fragment = ParentRegistrationFragment.newInstance(mUser.getEmail());
+                        getFragmentManager().beginTransaction().replace(R.id.content, fragment).disallowAddToBackStack().commitAllowingStateLoss();
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.i(ApplicationController.TAG, "Error with Volley response: " + error.networkResponse.statusCode);
+                        Log.i(ApplicationController.TAG, "Error with Volley response: Error code: " + error.networkResponse.statusCode);
+                        if (dialog.isShowing()) {
+                            dialog.dismiss();
+                        }
+                        createErrorDialog(getResources().getString(R.string.error_account_not_created)).show();
+
                     }
                 }
         ) {

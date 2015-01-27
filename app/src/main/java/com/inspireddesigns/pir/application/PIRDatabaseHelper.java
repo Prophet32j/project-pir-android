@@ -6,9 +6,11 @@ import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.inspireddesigns.pir.model.Parent;
 import com.inspireddesigns.pir.model.Reader;
+import com.inspireddesigns.pir.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +29,7 @@ public class PIRDatabaseHelper extends SQLiteOpenHelper {
     private static final String PARENT_TABLE = "parents";
     private static final String READER_TABLE = "readers";
     private static final String AVAILABILITY_TABLE = "availability";
+    private static final String USERS_TABLE = "users";
 
     private static final int DATABASE_VERSION = 1;
 
@@ -35,10 +38,14 @@ public class PIRDatabaseHelper extends SQLiteOpenHelper {
             "TEXT last_name, TEXT image, TEXT gender, INTEGER age, TEXT grade, TEXT alt_phone, TEXT alt_parent, INTEGER special_needs, " +
             "INTEGER language_needs, TEXT about_me, TEXT pair)";
     private static final String CREATE_TABLE_AVAILABILITY = "CREATE TABLE availability";
+    private static final String CREATE_TABLE_USERS = "CREATE TABLE users(user_id TEXT PRIMARY KEY NOT NULL, type TEXT, password TEXT, email TEXT, _v TEXT, activated INT, last_login TEXT, created TEXT);";
+
+
+    //Shared columns
+    private static final String EMAIL_COL = "email";
 
     //Parent columns
     private static final String PARENT_ID_COL = "parent_id";
-    private static final String EMAIL_COL = "email";
     private static final String FIRST_NAME_COL = "first_name";
     private static final String LAST_NAME_COL = "last_name";
 
@@ -55,10 +62,21 @@ public class PIRDatabaseHelper extends SQLiteOpenHelper {
     private static final String ABOUT_ME_COL = "about_me";
     private static final String PAIR_COL = "pair";
 
+    //User columns
+    private static final String USER_ID_COL = "user_id";
+    private static final String TYPE_COL = "type";
+    private static final String PASSWORD_COL = "password";
+    private static final String _v_COL = "_v";
+    private static final String ACTIVATED_COL = "activated";
+    private static final String LAST_LOGIN_COL = "last_login";
+    private static final String CREATED_COL = "created";
+
+
     private static final String READER_WHERE_CLAUSE = "WHERE reader_id=?";
 
     private static final String SELECT_PARENT = "SELECT * FROM parents WHERE id=?";
     private static final String SELECT_FIRST_PARENT = "SELECT TOP 1 * FROM parents";
+    private static final String SELECT_FIRST_USER = "SELECT * FROM users LIMIT 1";
     private static final String SELECT_READERS_FOR_PARENT = "SELECT * FROM readers WHERE parent_id=?";
 
     public static PIRDatabaseHelper getInstance(Context context) {
@@ -81,9 +99,10 @@ public class PIRDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase database) {
-        database.execSQL(CREATE_TABLE_PARENT);
-        database.execSQL(CREATE_TABLE_READER);
-        database.execSQL(CREATE_TABLE_AVAILABILITY);
+        database.execSQL(CREATE_TABLE_USERS);
+//        database.execSQL(CREATE_TABLE_PARENT);
+//        database.execSQL(CREATE_TABLE_READER);
+//        database.execSQL(CREATE_TABLE_AVAILABILITY);
         //create dummy data here if needed
     }
 
@@ -218,6 +237,37 @@ public class PIRDatabaseHelper extends SQLiteOpenHelper {
         return readers;
     }
 
+    public boolean saveUser(User user){
+        SQLiteDatabase db = getDbInstance();
+        ContentValues values = new ContentValues();
+        values.put(USER_ID_COL, user.get_id());
+        values.put(TYPE_COL, user.getType());
+        values.put(PASSWORD_COL, user.getPassword());
+        values.put(EMAIL_COL, user.getEmail());
+        values.put(_v_COL, user.get_v());
+        int activated = user.isActivated() == true ? 1 : 0;
+        values.put(ACTIVATED_COL, activated);
+        values.put(LAST_LOGIN_COL, user.getLast_login());
+        values.put(CREATED_COL, user.getCreated());
+
+        long result = db.insert(USERS_TABLE, null, values);
+        return result != -1;
+    }
+
+    public User getUser() {
+        User user = null;
+        SQLiteDatabase db = getDbInstance();
+        Cursor csr = db.rawQuery(SELECT_FIRST_USER, null);
+        if (csr != null) {
+            if (csr.moveToFirst()) {
+                user = buildUser(csr);
+            }
+            csr.close();
+        }
+        Log.i(ApplicationController.TAG, "Retrieving user from database: " + user.getEmail());
+        return user;
+    }
+
     //TODO public boolean saveReaders(List<Reader> readers){}
 
     /**
@@ -255,6 +305,25 @@ public class PIRDatabaseHelper extends SQLiteOpenHelper {
         Reader reader = new Reader();
         //TODO set all fields in Reader from cursor
         return reader;
+    }
+
+    private User buildUser(Cursor csr){
+        User user = new User();
+        user.set_id(csr.getString(csr.getColumnIndex(USER_ID_COL)));
+        user.setType(csr.getString(csr.getColumnIndex(TYPE_COL)));
+        user.setPassword(csr.getString(csr.getColumnIndex(PASSWORD_COL)));
+        user.setEmail(csr.getString(csr.getColumnIndex(EMAIL_COL)));
+        user.set_v(csr.getString(csr.getColumnIndex(_v_COL)));
+        boolean activated = csr.getInt(csr.getColumnIndex(ACTIVATED_COL)) == 1 ? true : false;
+        user.setActivated(activated);
+        String last_login = csr.getString(csr.getColumnIndex(LAST_LOGIN_COL));
+        if(last_login == null){
+            user.setLast_login("First login");
+        }else{
+            user.setLast_login(last_login);
+        }
+        user.setCreated(csr.getString(csr.getColumnIndex(CREATED_COL)));
+        return user;
     }
 
 }

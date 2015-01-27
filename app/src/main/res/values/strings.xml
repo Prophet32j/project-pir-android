@@ -9,6 +9,12 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
+    <string name="volunteer">Volunteer</string>
+
+    <!--Dialog strings -->
+    <string name="error_account_not_created">Oops! Something went wrong. Account not created</string>
+    <string name="ok">Ok</string>
+    <string name="loading">Loading</string>
 
     <array name="admin_listview_item_titles">
         <item>Dashboard</item>
@@ -38,8 +44,6 @@
     <string name="hello_world">Hello world!</string>
 
 
-    <!--SQLite database creation -->
-    <string name="create_table_parents"/>
 
     <!-- Request queries -->
     <string name="query_parent_request_prefix">/parents?id=</string>
