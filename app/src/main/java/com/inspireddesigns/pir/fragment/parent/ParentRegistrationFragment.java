@@ -9,11 +9,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.inspireddesigns.pir.R;
+import com.inspireddesigns.pir.fragment.home.PIRBaseFragment;
 
 /**
  * Displays the parent registration screen.
  */
-public class ParentRegistrationFragment extends Fragment {
+public class ParentRegistrationFragment extends PIRBaseFragment {
 
     private View view;
     private String mEmail;

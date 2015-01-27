@@ -8,13 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.inspireddesigns.pir.R;
+import com.inspireddesigns.pir.fragment.home.PIRBaseFragment;
 
 /**
  * Displays child/children registered with a Parent with the options to delete, add , and edit existing child/children.
  *
  * If the parent does not have at least one child registered, they will be prompted to add a child.
  */
-public class ManageReaderFragment extends Fragment {
+public class ManageReaderFragment extends PIRBaseFragment {
 
 
     public static ManageReaderFragment newInstance() {

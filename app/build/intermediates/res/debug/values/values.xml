@@ -220,12 +220,14 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="ok">Ok</string>
+    <string name="parent_identifier">p</string>
     <string name="query_parent_request_prefix">/parents?id=</string>
     <string name="title_activity_parent">ParentActivity</string>
     <string name="title_section1">Dashboard</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
     <string name="volunteer">Volunteer</string>
+    <string name="volunteer_identifier">v</string>
     <!-- From: file:/Users/blsiege/PIR_2/project-pir-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.2/res/values/values.xml -->
     <eat-comment/>
     <style name="Base.TextAppearance.AppCompat" parent="android:TextAppearance">

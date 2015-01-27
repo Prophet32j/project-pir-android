@@ -22,8 +22,5 @@ public class ApplicationConstants {
      */
     public static final int USER_FRONT_DESK = 3;
 
-    /**
-     * Used as a key to pass parent id from login service to Parent Dashboard
-     */
-    public static final String KEY_LOGGED_IN_PARENT_ID = "parent_id";
+    public static final String PARENTS_API_URL = "http://pir-node.herokuapp.com/users";
 }

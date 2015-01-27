@@ -18,6 +18,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.inspireddesigns.pir.R;
+import com.inspireddesigns.pir.application.ApplicationConstants;
 import com.inspireddesigns.pir.application.ApplicationController;
 import com.inspireddesigns.pir.fragment.parent.ParentRegistrationFragment;
 import com.inspireddesigns.pir.model.User;
@@ -39,7 +40,6 @@ public class CreateUserFragment extends PIRBaseFragment {
     private TextView mPostResponse;
     private Spinner mUserTypeSpinner;
     private Button createAccountButton;
-    private final static String POST_URL = "http://pir-node.herokuapp.com/users";
     private ProgressDialog dialog;
 
     private static final String PARAM_EMAIL = "email";
@@ -99,14 +99,17 @@ public class CreateUserFragment extends PIRBaseFragment {
         try {
             params.put(PARAM_EMAIL, mEmailTextView.getText().toString());
             params.put(PARAM_PASSWORD, mPasswordTextView.getText().toString());
-            char accountType = mUserTypeSpinner.getSelectedItem().toString().equals(getResources().getString(R.string.volunteer)) ? 'v' : 'p';
+            char char_parent = getResources().getString(R.string.parent_identifier).charAt(0);
+            char char_volunteer = getResources().getString(R.string.volunteer_identifier).charAt(0);
+
+            char accountType = mUserTypeSpinner.getSelectedItem().toString().equals(getResources().getString(R.string.volunteer)) ? char_volunteer : char_parent;
             params.put(PARAM_TYPE, String.valueOf(accountType));
 
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.POST, POST_URL, params,
+        JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.POST, ApplicationConstants.PARENTS_API_URL, params,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -118,8 +121,7 @@ public class CreateUserFragment extends PIRBaseFragment {
                         }
                         Log.d(ApplicationController.TAG, "Response from POST User: " + response.toString());
 
-                        ParentRegistrationFragment fragment = ParentRegistrationFragment.newInstance(mUser.getEmail());
-                        getFragmentManager().beginTransaction().replace(R.id.content, fragment).disallowAddToBackStack().commitAllowingStateLoss();
+                        goToRegistration();
                     }
                 },
                 new Response.ErrorListener() {
@@ -137,6 +139,18 @@ public class CreateUserFragment extends PIRBaseFragment {
         };
 
         ApplicationController.getInstance().addToRequestQueue(postRequest);
+    }
+
+    private void goToRegistration() {
+        switch (mUser.getType().charAt(0)){
+            case 'p':
+                ParentRegistrationFragment fragment = ParentRegistrationFragment.newInstance(mUser.getEmail());
+                getFragmentManager().beginTransaction().replace(R.id.content, fragment).disallowAddToBackStack().commitAllowingStateLoss();
+                break;
+            case 'v':
+                //TODO go to VolunteerRegistrationFragment
+                break;
+        }
     }
 }
 
