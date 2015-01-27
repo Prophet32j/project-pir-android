@@ -31,13 +31,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dedeb330-0f1e-40ed-9235-0ba49204b808" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/inspireddesigns/pir/application/ApplicationConstants.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/inspireddesigns/pir/application/ApplicationConstants.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/inspireddesigns/pir/fragment/home/CreateUserFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/inspireddesigns/pir/fragment/home/CreateUserFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/inspireddesigns/pir/fragment/parent/ManageReaderFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/inspireddesigns/pir/fragment/parent/ManageReaderFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/inspireddesigns/pir/fragment/parent/ParentDashboardFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/inspireddesigns/pir/fragment/parent/ParentDashboardFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/inspireddesigns/pir/fragment/parent/ParentRegistrationFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/inspireddesigns/pir/fragment/parent/ParentRegistrationFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="project-pir-android.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -60,30 +54,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CreateUserFragment.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="CreateUserFragment.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/inspireddesigns/pir/fragment/home/CreateUserFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="942" max-vertical-offset="2355">
-              <caret line="42" column="34" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.11061947" vertical-offset="330" max-vertical-offset="1920">
+              <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2839#2881#0" expanded="true" />
-                <element signature="e#3681#3733#0" expanded="true" />
-                <element signature="e#3779#3834#0" expanded="true" />
-                <element signature="e#3931#3975#0" expanded="true" />
-                <element signature="e#5451#5511#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ParentDashboardFragment.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/inspireddesigns/pir/fragment/parent/ParentDashboardFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.67264575" vertical-offset="135" max-vertical-offset="930">
-              <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-              <folding>
-                <element signature="method#ParentDashboardFragment#0;class#ParentDashboardFragment#0" expanded="false" />
+                <element signature="e#2670#2712#0" expanded="true" />
+                <element signature="e#3512#3564#0" expanded="true" />
+                <element signature="e#3610#3665#0" expanded="true" />
+                <element signature="e#3762#3806#0" expanded="true" />
+                <element signature="e#5282#5342#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1118,9 +1099,9 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/inspireddesigns/pir/fragment/parent/ManageReaderFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/inspireddesigns/pir/fragment/parent/ParentRegistrationFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/inspireddesigns/pir/fragment/home/CreateUserFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/inspireddesigns/pir/application/ApplicationConstants.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/inspireddesigns/pir/fragment/parent/ParentDashboardFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/inspireddesigns/pir/fragment/home/CreateUserFragment.java" />
       </list>
     </option>
   </component>
@@ -1839,8 +1820,8 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286119" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3286119" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22804533" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286119" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49433428" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286119" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -2322,27 +2303,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/inspireddesigns/pir/fragment/home/CreateUserFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/inspireddesigns/pir/fragment/parent/ParentDashboardFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2355">
-          <caret line="42" column="34" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.58027077" vertical-offset="135" max-vertical-offset="930">
+          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2839#2881#0" expanded="true" />
-            <element signature="e#3681#3733#0" expanded="true" />
-            <element signature="e#3779#3834#0" expanded="true" />
-            <element signature="e#3931#3975#0" expanded="true" />
-            <element signature="e#5451#5511#0" expanded="true" />
+            <element signature="method#ParentDashboardFragment#0;class#ParentDashboardFragment#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/inspireddesigns/pir/fragment/parent/ParentDashboardFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/inspireddesigns/pir/fragment/home/CreateUserFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.67264575" vertical-offset="135" max-vertical-offset="930">
-          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.11061947" vertical-offset="330" max-vertical-offset="1920">
+          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
           <folding>
-            <element signature="method#ParentDashboardFragment#0;class#ParentDashboardFragment#0" expanded="false" />
+            <element signature="e#2670#2712#0" expanded="true" />
+            <element signature="e#3512#3564#0" expanded="true" />
+            <element signature="e#3610#3665#0" expanded="true" />
+            <element signature="e#3762#3806#0" expanded="true" />
+            <element signature="e#5282#5342#0" expanded="true" />
           </folding>
         </state>
       </provider>

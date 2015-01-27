@@ -50,14 +50,7 @@ public class CreateUserFragment extends PIRBaseFragment {
         return new CreateUserFragment();
     }
 
-    public CreateUserFragment() {
-        // Required empty public constructor
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+    public CreateUserFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
