@@ -29,7 +29,8 @@ import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 /**
- * Displays the parent registration screen.
+ * Displays the parent registration screen and POSTs to /parents.
+ *
  */
 public class ParentRegistrationFragment extends PIRBaseFragment {
 
