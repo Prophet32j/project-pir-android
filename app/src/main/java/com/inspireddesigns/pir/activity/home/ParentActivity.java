@@ -18,16 +18,14 @@ public class ParentActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parent);
-        //parentId = getIntent().getExtras().getInt(ApplicationConstants.KEY_LOGGED_IN_PARENT_ID);
-        setupFragment();
+        if(savedInstanceState == null) {
+            setupFragment();
+        }
     }
 
     private void setupFragment() {
         CreateUserFragment fragment = CreateUserFragment.newInstance();
-//        Bundle args = new Bundle();
-//        args.putInt(ApplicationConstants.KEY_LOGGED_IN_PARENT_ID, parentId);
-//        fragment.setArguments(args);
-        getFragmentManager().beginTransaction().replace(R.id.content, fragment).commit();
+        getFragmentManager().beginTransaction().replace(R.id.content, fragment).disallowAddToBackStack().commitAllowingStateLoss();
     }
 
 

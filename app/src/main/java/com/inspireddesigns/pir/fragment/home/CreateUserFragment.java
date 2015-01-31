@@ -20,6 +20,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.inspireddesigns.pir.R;
 import com.inspireddesigns.pir.application.ApplicationConstants;
 import com.inspireddesigns.pir.application.ApplicationController;
+import com.inspireddesigns.pir.application.PIRDatabaseHelper;
 import com.inspireddesigns.pir.fragment.parent.ParentRegistrationFragment;
 import com.inspireddesigns.pir.model.User;
 import com.inspireddesigns.pir.util.JSONParseUtil;
@@ -37,7 +38,6 @@ public class CreateUserFragment extends PIRBaseFragment {
     private View view;
     private EditText mEmailTextView;
     private EditText mPasswordTextView;
-    private TextView mPostResponse;
     private Spinner mUserTypeSpinner;
     private Button createAccountButton;
     private ProgressDialog dialog;
@@ -61,7 +61,6 @@ public class CreateUserFragment extends PIRBaseFragment {
         mEmailTextView = (EditText) view.findViewById(R.id.et_email);
         mPasswordTextView = (EditText) view.findViewById(R.id.et_password);
         mUserTypeSpinner = (Spinner) view.findViewById(R.id.spinner_user_type);
-        mPostResponse = (TextView) view.findViewById(R.id.tv_postResponse);
         createAccountButton = (Button) view.findViewById(R.id.createAccountButton);
         dialog = new ProgressDialog(getActivity());
 
@@ -76,11 +75,7 @@ public class CreateUserFragment extends PIRBaseFragment {
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
                 R.array.user_type_choices, android.R.layout.simple_spinner_item);
-
-        // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        // Apply the adapter to the spinner
         mUserTypeSpinner.setAdapter(adapter);
 
         return view;
@@ -94,21 +89,17 @@ public class CreateUserFragment extends PIRBaseFragment {
             params.put(PARAM_PASSWORD, mPasswordTextView.getText().toString());
             char char_parent = getResources().getString(R.string.parent_identifier).charAt(0);
             char char_volunteer = getResources().getString(R.string.volunteer_identifier).charAt(0);
-
             char accountType = mUserTypeSpinner.getSelectedItem().toString().equals(getResources().getString(R.string.volunteer)) ? char_volunteer : char_parent;
             params.put(PARAM_TYPE, String.valueOf(accountType));
-
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.POST, ApplicationConstants.PARENTS_API_URL, params,
+        JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.POST, ApplicationConstants.USERS_API_URL, params,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         mUser = JSONParseUtil.parseUser(response);
-                        //Used for testing
-                        mPostResponse.setText(mUser.get_id() + "\n" + mUser.getEmail() + "\n" + mUser.getPassword() + "\n" + mUser.getType());
                         if (dialog.isShowing()) {
                             dialog.dismiss();
                         }

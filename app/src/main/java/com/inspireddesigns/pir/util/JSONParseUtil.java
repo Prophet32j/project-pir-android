@@ -31,15 +31,23 @@ public class JSONParseUtil {
 
     public static Parent parseParent(JSONObject response) {
         Parent parent = new Parent();
+
         try {
+
+            response = response.getJSONObject("parent"); //used to get past root element 'parent'
             parent.set_id(response.getString("_id"));
             parent.setEmail(response.getString("email"));
-            parent.setReaders(getParsedReaders(response));
+            JSONArray readers = response.getJSONArray("readers");
+            if(readers != null || readers.length() != 0){
+                parent.setReaders(getParsedReaders(response));
+            }else{
+                parent.setReaders(new ArrayList<Reader>());
+            }
             parent.setFirst_name(response.getString("first_name"));
             parent.setLast_name(response.getString("last_name"));
+            parent.setPhone(response.getString("phone"));
         } catch (JSONException e) {
             e.printStackTrace();
-            Log.e(ApplicationController.TAG, "Error parsing parent from JSON response");
         }
         return parent;
     }
@@ -66,6 +74,7 @@ public class JSONParseUtil {
                 reader.setPair(childJSONObject.getString("pair"));
                 JSONObject availabilityMap = response.getJSONObject("availability");
                 reader.setAvailability(getAvailabilityMap(availabilityMap));
+                readers.add(reader);
             }
         } catch (JSONException e) {
             e.printStackTrace();

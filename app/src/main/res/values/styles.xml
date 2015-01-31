@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="CustomAppTheme" parent="Theme.AppCompat.NoActionBar">
+    <style name="CustomAppTheme" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
         <item name="windowActionBar">false</item>
         <item name="android:textViewStyle">@style/RobotoTextViewStyle</item>

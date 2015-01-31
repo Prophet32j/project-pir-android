@@ -4,7 +4,6 @@ import java.util.List;
 
 /**
  * Created by Brad Siegel on 1/9/15.
- *
  */
 public class Parent {
     private String _id;
@@ -12,6 +11,7 @@ public class Parent {
     private List<Reader> readers;
     private String first_name;
     private String last_name;
+    private String phone;
 
     public Parent() {
     }
@@ -55,4 +55,13 @@ public class Parent {
     public void setLast_name(String last_name) {
         this.last_name = last_name;
     }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
 }

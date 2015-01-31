@@ -22,5 +22,8 @@ public class ApplicationConstants {
      */
     public static final int USER_FRONT_DESK = 3;
 
-    public static final String PARENTS_API_URL = "http://pir-node.herokuapp.com/users";
+
+    public static final String USERS_API_URL = "http://pir-node.herokuapp.com/users";
+
+    public static final String PARENTS_API_URL = "http://pir-node.herokuapp.com/parents";
 }
