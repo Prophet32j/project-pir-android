@@ -1,0 +1,134 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.inspireddesigns.pir.fragment.parent.ParentRegistrationFragment"
+    android:padding="15dp">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:id="@+id/parent_email"
+        android:textSize="20sp"
+        android:text="@string/hello_blank_fragment"
+        android:layout_below="@+id/textViewEmail"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Email:"
+        android:id="@+id/textViewEmail"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="First Name:"
+        android:id="@+id/textViewFirstName"
+        android:layout_below="@+id/parent_email"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="36dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/editTextFirstName"
+        android:layout_below="@+id/textViewFirstName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Last Name:"
+        android:id="@+id/textViewLastName"
+        android:layout_below="@+id/editTextFirstName"
+        android:layout_alignLeft="@+id/editTextFirstName"
+        android:layout_alignStart="@+id/editTextFirstName" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/editTextLastName"
+        android:layout_below="@+id/textViewLastName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Phone:"
+        android:id="@+id/textViewPhoneNumber"
+        android:layout_below="@+id/editTextLastName"
+        android:layout_alignLeft="@+id/editTextPhone"
+        android:layout_alignStart="@+id/editTextPhone" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:ems="10"
+        android:id="@+id/editTextPhone"
+        android:layout_below="@+id/textViewPhoneNumber"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:id="@+id/registerButton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/responseTextView"
+        android:layout_below="@+id/editTextPhone"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="31dp" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:layout_alignBottom="@+id/textViewPhoneNumber"
+        android:layout_centerHorizontal="true"
+        android:indeterminate="false"
+        android:visibility="gone"/><![CDATA[
+
+
+
+
+
+
+
+
+
+
+
+    " />
+
+
+
+
+
+
+]]>
+</RelativeLayout>
+<!-- From: file:/Users/blsiege/PIR_2/project-pir-android/app/src/main/res/layout/fragment_parent_registration.xml -->

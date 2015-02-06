@@ -23,7 +23,14 @@ public class ApplicationConstants {
     public static final int USER_FRONT_DESK = 3;
 
 
-    public static final String USERS_API_URL = "http://pir-node.herokuapp.com/users";
+    //production URLs
+    public static final String USERS_API_URL = "http://pir-node.herokuapp.com/register";
+    public static final String PARENTS_API_URL = "http://pir-node.herokuapp.com/api/parents";
+    public static final String LOGIN_API_URL = "http://pir-node.herokuapp.com/login";
 
-    public static final String PARENTS_API_URL = "http://pir-node.herokuapp.com/parents";
+
+
+//test URLs
+//    public static final String PARENTS_API_URL = "http://project-pir-node-173519.use1.nitrousbox.com/api/parents";
+//    public static final String LOGIN_API_URL = "http://project-pir-node-173519.use1.nitrousbox.com/login";
 }

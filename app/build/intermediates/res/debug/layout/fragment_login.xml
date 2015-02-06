@@ -1,0 +1,59 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.inspireddesigns.pir.fragment.home.LoginFragment"
+    android:layout_margin="10dp">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/editTextEmail"
+        android:layout_marginTop="153dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/textViewEmail"
+        android:layout_toEndOf="@+id/textViewEmail" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Password:"
+        android:id="@+id/textViewPassword"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Email:"
+        android:id="@+id/textViewEmail"
+        android:layout_alignBaseline="@+id/editTextEmail"
+        android:layout_alignBottom="@+id/editTextEmail"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/editTextPassword"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/textViewPassword"
+        android:layout_toEndOf="@+id/textViewPassword" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:id="@+id/buttonLogin"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>
+<!-- From: file:/Users/blsiege/PIR_2/project-pir-android/app/src/main/res/layout/fragment_login.xml -->

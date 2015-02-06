@@ -13,9 +13,6 @@ public class Parent {
     private String last_name;
     private String phone;
 
-    public Parent() {
-    }
-
     public String get_id() {
         return _id;
     }

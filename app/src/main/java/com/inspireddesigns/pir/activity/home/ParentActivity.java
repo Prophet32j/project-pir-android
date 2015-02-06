@@ -1,33 +1,29 @@
 package com.inspireddesigns.pir.activity.home;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.inspireddesigns.pir.R;
-import com.inspireddesigns.pir.application.ApplicationConstants;
-import com.inspireddesigns.pir.fragment.home.CreateUserFragment;
-import com.inspireddesigns.pir.fragment.parent.ParentDashboardFragment;
 
 public class ParentActivity extends ActionBarActivity {
 
     private int parentId;
+    private String mToken;
+    private String mEmail;
+    private static final String URL_PREFIX = "http://pir-node.herokuapp.com/parents/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parent);
-        if(savedInstanceState == null) {
-            setupFragment();
-        }
     }
 
-    private void setupFragment() {
-        CreateUserFragment fragment = CreateUserFragment.newInstance();
-        getFragmentManager().beginTransaction().replace(R.id.content, fragment).disallowAddToBackStack().commitAllowingStateLoss();
-    }
-
+//    private void setupFragment() {
+//        CreateUserFragment fragment = CreateUserFragment.newInstance();
+//        getFragmentManager().beginTransaction().replace(R.id.content, fragment).disallowAddToBackStack().commitAllowingStateLoss();
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

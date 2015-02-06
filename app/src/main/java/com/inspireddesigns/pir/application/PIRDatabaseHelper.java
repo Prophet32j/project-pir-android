@@ -32,6 +32,7 @@ public class PIRDatabaseHelper extends SQLiteOpenHelper {
     private static final String READER_TABLE = "readers";
     private static final String AVAILABILITY_TABLE = "availability";
     private static final String USERS_TABLE = "users";
+    private static final String TOKEN_TABLE = "token";
     private static final String AVAILABILITY_TIME_DELIMITER = ",";
 
     private static final int DATABASE_VERSION = 1;
@@ -42,7 +43,7 @@ public class PIRDatabaseHelper extends SQLiteOpenHelper {
             "INTEGER language_needs, TEXT about_me, TEXT pair)";
     private static final String CREATE_TABLE_AVAILABILITY = "CREATE TABLE availability(id TEXT PRIMARY KEY, day TEXT, times TEXT);";
     private static final String CREATE_TABLE_USERS = "CREATE TABLE users(user_id TEXT PRIMARY KEY NOT NULL, type TEXT, password TEXT, email TEXT, _v TEXT, activated INT, last_login TEXT, created TEXT);";
-
+    private static final String CREATE_TABLE_TOKEN = "CREATE TABLE token(email TEXT PRIMARY KEY, token TEXT);";
 
     //Shared columns
     private static final String EMAIL_COL = "email";
@@ -80,14 +81,20 @@ public class PIRDatabaseHelper extends SQLiteOpenHelper {
 
 
     private static final String READER_WHERE_CLAUSE = "reader_id=?";
-    private static final String WHERE_CLAUSE_ID = "WHERE id =?";
+    private static final String WHERE_CLAUSE_ID = "id =?";
     private static final String WHERE_CLAUSE_PARENT_ID = "parent_id =?";
+    private static final String WHERE_CLAUSE_EMAIL = "email=?";
 
     private static final String SELECT_PARENT = "SELECT EXISTS (* FROM parents WHERE id=?)";
     private static final String SELECT_FIRST_PARENT = "SELECT * FROM parents LIMIT 1";
     private static final String SELECT_FIRST_USER = "SELECT * FROM users LIMIT 1";
     private static final String SELECT_READERS_FOR_PARENT = "SELECT * FROM readers WHERE parent_id=?";
     private static final String SELECT_AVAILABILITY_FOR_ID = "SELECT * FROM availability WHERE id=?";
+    private static final String SELECT_FIRST_TOKEN = "SELECT * FROM token LIMIT 1";
+
+
+    //token
+    private static final String TOKEN_COL = "token";
 
 
     public static PIRDatabaseHelper getInstance(Context context) {
@@ -112,7 +119,7 @@ public class PIRDatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase database) {
         database.execSQL(CREATE_TABLE_USERS);
         database.execSQL(CREATE_TABLE_PARENT);
-//        database.execSQL(CREATE_TABLE_READER);
+        database.execSQL(CREATE_TABLE_TOKEN);
         database.execSQL(CREATE_TABLE_AVAILABILITY);
         //create dummy data here if needed
     }
@@ -172,29 +179,30 @@ public class PIRDatabaseHelper extends SQLiteOpenHelper {
      * @return true if save successful, otherwise false.
      */
     public boolean saveParent(Parent parent) {
-        long result = -1;
+        long result;
         long readersResult = -1;
 
         SQLiteDatabase db = getDbInstance();
         ContentValues values = new ContentValues();
-        //Cursor csr = db.rawQuery("SELECT * FROM parents", null);
+        Cursor csr = db.rawQuery("SELECT * FROM parents", null);
+        long entries = DatabaseUtils.queryNumEntries(db, PARENT_TABLE);
+
         values.put(PARENT_ID_COL, parent.get_id());
         values.put(EMAIL_COL, parent.getEmail());
         values.put(FIRST_NAME_COL, parent.getFirst_name());
         values.put(LAST_NAME_COL, parent.getLast_name());
 
-        //TODO determine if row already exists and update, else insert new
         if (parent.getReaders().size() > 0) {
             readersResult = saveReaders(parent.getReaders(), parent.get_id());
         }
-        //if (csr == null) {
+        if (entries == 0) {
             result = db.insert(PARENT_TABLE, null, values);
-       // } else {
-       //     result = db.update(PARENT_TABLE, values, WHERE_CLAUSE_PARENT_ID, new String[]{parent.get_id()});
-       // }
+        } else {
+            result = db.update(PARENT_TABLE, values, WHERE_CLAUSE_PARENT_ID, new String[]{parent.get_id()});
+        }
 
         Log.i(ApplicationController.TAG, "RESULT : " + result);
-        return result != -1;
+        return result != -1 && readersResult != -1;
     }
 
     private long saveReaders(List<Reader> readers, String parent_id) {
@@ -223,6 +231,7 @@ public class PIRDatabaseHelper extends SQLiteOpenHelper {
             values.put(PAIR_COL, reader.getPair());
             availabilityResult = saveReaderAvailability(reader.get_id(), reader.getAvailability());
 
+            //TODO verify that this works
             if (csr == null) {
                 result = db.insert(READER_TABLE, null, values);
             } else {
@@ -294,35 +303,66 @@ public class PIRDatabaseHelper extends SQLiteOpenHelper {
         return readers;
     }
 
-    public boolean saveUser(User user) {
+    //TODO need to determine when to insert/update. Will not work with just update
+    public boolean saveToken(String token, String email) {
         SQLiteDatabase db = getDbInstance();
         ContentValues values = new ContentValues();
-        values.put(USER_ID_COL, user.get_id());
-        values.put(TYPE_COL, user.getType());
-        values.put(PASSWORD_COL, user.getPassword());
-        values.put(EMAIL_COL, user.getEmail());
-        int activated = user.isActivated() == true ? 1 : 0;
-        values.put(ACTIVATED_COL, activated);
-        values.put(LAST_LOGIN_COL, user.getLast_login());
-        values.put(CREATED_COL, user.getCreated());
-
-        long result = db.insert(USERS_TABLE, null, values);
+        long entries = DatabaseUtils.queryNumEntries(db, TOKEN_TABLE);
+        long result = -1;
+        values.put(EMAIL_COL, email);
+        values.put(TOKEN_COL, token);
+        if (entries == 0) {
+            result = db.insert(TOKEN_TABLE, null, values);
+        } else {
+            result = db.update(TOKEN_TABLE, values, WHERE_CLAUSE_EMAIL, new String[]{email});
+        }
         return result != -1;
     }
 
-    public User getUser() {
-        User user = null;
+    public String getToken() {
+        String token = "";
         SQLiteDatabase db = getDbInstance();
-        Cursor csr = db.rawQuery(SELECT_FIRST_USER, null);
+        Cursor csr = db.rawQuery(SELECT_FIRST_TOKEN, null);
         if (csr != null) {
             if (csr.moveToFirst()) {
-                user = buildUser(csr);
+                token = csr.getString(csr.getColumnIndex(TOKEN_COL));
             }
             csr.close();
         }
-        Log.i(ApplicationController.TAG, "Retrieving user from database: " + user.getEmail());
-        return user;
+
+        Log.i(ApplicationController.TAG, "getToken(): " + token);
+        return token;
     }
+
+//    public boolean saveUser(User user) {
+//        SQLiteDatabase db = getDbInstance();
+//        ContentValues values = new ContentValues();
+//        values.put(USER_ID_COL, user.get_id());
+//        values.put(TYPE_COL, user.getType());
+//        values.put(PASSWORD_COL, user.getPassword());
+//        values.put(EMAIL_COL, user.getEmail());
+//        int activated = user.isActivated() == true ? 1 : 0;
+//        values.put(ACTIVATED_COL, activated);
+//        values.put(LAST_LOGIN_COL, user.getLast_login());
+//        values.put(CREATED_COL, user.getCreated());
+//
+//        long result = db.insert(USERS_TABLE, null, values);
+//        return result != -1;
+//    }
+
+//    public User getUser() {
+//        User user = null;
+//        SQLiteDatabase db = getDbInstance();
+//        Cursor csr = db.rawQuery(SELECT_FIRST_USER, null);
+//        if (csr != null) {
+//            if (csr.moveToFirst()) {
+//                user = buildUser(csr);
+//            }
+//            csr.close();
+//        }
+//        Log.i(ApplicationController.TAG, "Retrieving user from database: " + user.getEmail());
+//        return user;
+//    }
 
     //TODO public boolean saveReaders(List<Reader> readers){}
 

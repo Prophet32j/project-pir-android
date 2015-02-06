@@ -100,7 +100,19 @@
         android:layout_below="@+id/editTextPhone"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="31dp" /><![CDATA[
+        android:layout_marginTop="31dp" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:layout_alignBottom="@+id/textViewPhoneNumber"
+        android:layout_centerHorizontal="true"
+        android:indeterminate="false"
+        android:visibility="gone"/><![CDATA[
+
+
 
 
 
@@ -111,6 +123,7 @@
 
 
     " />
+
 
 
 

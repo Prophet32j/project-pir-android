@@ -10,17 +10,16 @@
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
 
-
-    <!--Dialog strings -->
+    <!-- Dialog strings -->
     <string name="error_account_not_created">Oops! Something went wrong. Account not created</string>
     <string name="ok">Ok</string>
     <string name="loading">Loading</string>
 
-    <!--used to convert user type to char and determine which user type -->
+    <!-- used to convert user type to char and determine which user type -->
     <string name="parent_identifier">p</string>
     <string name="volunteer_identifier">v</string>
 
-    <!--User types-->
+    <!-- User types -->
     <string name="volunteer">Volunteer</string>
 
     <array name="admin_listview_item_titles">
@@ -50,15 +49,14 @@
     <string name="title_activity_parent">ParentActivity</string>
     <string name="hello_world">Hello world!</string>
 
-
-
     <!-- Request queries -->
     <string name="query_parent_request_prefix">/parents?id=</string>
-
 
     <string-array name="user_type_choices">
         <item>Volunteer</item>
         <item>Parent</item>
     </string-array>
+
+    <string name="title_activity_login">LoginActivity</string>
 
 </resources>

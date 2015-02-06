@@ -34,7 +34,6 @@ import org.json.JSONObject;
  */
 public class CreateUserFragment extends PIRBaseFragment {
 
-    private User mUser;
     private View view;
     private EditText mEmailTextView;
     private EditText mPasswordTextView;
@@ -99,14 +98,14 @@ public class CreateUserFragment extends PIRBaseFragment {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        mUser = JSONParseUtil.parseUser(response);
                         if (dialog.isShowing()) {
                             dialog.dismiss();
                         }
                         Log.d(ApplicationController.TAG, "Response from POST User: " + response.toString());
 
-                        goToRegistration();
+                        //TODO notify user to confirm email address before being able to login
                     }
+
                 },
                 new Response.ErrorListener() {
                     @Override
@@ -125,17 +124,6 @@ public class CreateUserFragment extends PIRBaseFragment {
         ApplicationController.getInstance().addToRequestQueue(postRequest);
     }
 
-    private void goToRegistration() {
-        switch (mUser.getType().charAt(0)){
-            case 'p':
-                ParentRegistrationFragment fragment = ParentRegistrationFragment.newInstance(mUser.getEmail());
-                getFragmentManager().beginTransaction().replace(R.id.content, fragment).disallowAddToBackStack().commitAllowingStateLoss();
-                break;
-            case 'v':
-                //TODO go to VolunteerRegistrationFragment
-                break;
-        }
-    }
 }
 
 

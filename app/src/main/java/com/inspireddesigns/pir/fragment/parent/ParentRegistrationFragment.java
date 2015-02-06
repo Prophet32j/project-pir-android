@@ -1,7 +1,6 @@
 package com.inspireddesigns.pir.fragment.parent;
 
 
-import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,26 +9,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.inspireddesigns.pir.R;
 import com.inspireddesigns.pir.application.ApplicationConstants;
 import com.inspireddesigns.pir.application.ApplicationController;
 import com.inspireddesigns.pir.application.PIRDatabaseHelper;
 import com.inspireddesigns.pir.fragment.home.PIRBaseFragment;
 import com.inspireddesigns.pir.model.Parent;
+import com.inspireddesigns.pir.request.JSONAuthenticatedRequest;
 import com.inspireddesigns.pir.util.JSONParseUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 /**
- * Displays the parent registration screen and POSTs to /parents.
+ * Displays the parent registration screen and POSTs to /api/parents.
+ * This is an authenticated screen, token is put into request header.
  *
  */
 public class ParentRegistrationFragment extends PIRBaseFragment {
@@ -44,6 +45,8 @@ public class ParentRegistrationFragment extends PIRBaseFragment {
     private EditText mEditTextPhoneNumber;
     private Button mRegisterButton;
     private ProgressDialog dialog;
+    private ProgressBar progressBar;
+
 
     private static final String PARAM_EMAIL = "email";
     private static final String PARAM_FIRST_NAME = "first_name";
@@ -83,10 +86,12 @@ public class ParentRegistrationFragment extends PIRBaseFragment {
         mEditTextPhoneNumber = (EditText) view.findViewById(R.id.editTextPhone);
         mRegisterButton = (Button) view.findViewById(R.id.registerButton);
         dialog = new ProgressDialog(getActivity());
+        progressBar = (ProgressBar)view.findViewById(R.id.progressBar);
 
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progressBar.setVisibility(View.VISIBLE);
                 executePostRequest();
                 dialog.setMessage(getResources().getString(R.string.loading));
                 dialog.show();
@@ -108,7 +113,11 @@ public class ParentRegistrationFragment extends PIRBaseFragment {
             e.printStackTrace();
         }
 
-        JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.POST, ApplicationConstants.PARENTS_API_URL, params, new Response.Listener<JSONObject>() {
+        String token = PIRDatabaseHelper.getInstance(getActivity()).getToken();
+        Log.i(ApplicationController.TAG, "Token for request: " + token);
+
+        JSONAuthenticatedRequest postRequest = new JSONAuthenticatedRequest(token,Request.Method.POST, ApplicationConstants.PARENTS_API_URL, params, new Response.Listener<JSONObject>() {
+
             @Override
             public void onResponse(JSONObject response) {
                 if (dialog.isShowing()) {
@@ -117,6 +126,12 @@ public class ParentRegistrationFragment extends PIRBaseFragment {
 
                 mParent = JSONParseUtil.parseParent(response);
                 PIRDatabaseHelper.getInstance(getActivity()).saveParent(mParent);
+
+                progressBar.setVisibility(View.GONE);
+
+                //registration successful, send parent to dashboard
+                ParentDashboardFragment fragment = ParentDashboardFragment.newInstance();
+                getFragmentManager().beginTransaction().replace(R.id.content, fragment).disallowAddToBackStack().commitAllowingStateLoss();
 
                 Log.i(ApplicationController.TAG, "Parent: " + mParent.getFirst_name() + " " + mParent.getLast_name());
                 Log.i(ApplicationController.TAG, "Response from POST parent" + response.toString());
@@ -127,18 +142,24 @@ public class ParentRegistrationFragment extends PIRBaseFragment {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        progressBar.setVisibility(View.GONE);
                         Log.i(ApplicationController.TAG, "Error with Volley response: Error code: " + error.networkResponse.statusCode);
                         if (dialog.isShowing()) {
                             dialog.dismiss();
                         }
                         createErrorDialog(getResources().getString(R.string.error_account_not_created)).show();
-
                     }
                 }
         ) {
 
         };
 
+
+        try {
+            Log.i(ApplicationController.TAG, "Request Header for Parent Registration: " + postRequest.getHeaders().toString());
+        } catch (AuthFailureError authFailureError) {
+            authFailureError.printStackTrace();
+        }
         ApplicationController.getInstance().addToRequestQueue(postRequest);
     }
 

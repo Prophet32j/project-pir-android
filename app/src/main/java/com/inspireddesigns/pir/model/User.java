@@ -6,33 +6,29 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 /**
  * User model that will be used at login. This is the first object created when a a new user
  * is creating an account.
- *
+ * <p/>
  * Created by Brad Siegel on 1/25/15.
  */
-@JsonRootName(value = "user")
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
-//TODO remove JsonIgnoreProperties annotation and determiine datatype for _v
     private String _id;
     private String type;
     private String password;
     private String email;
-    private String _v;
     private boolean activated;
     private String last_login;
     private String created;
+    private String token;
 
 
     public User() {
 
     }
 
-    public User(String _id, String type, String password, String email, String _v, boolean activated, String last_login, String created) {
+    public User(String _id, String type, String password, String email, boolean activated, String last_login, String created) {
         this._id = _id;
         this.type = type;
         this.password = password;
         this.email = email;
-        this._v = _v;
         this.activated = activated;
         this.last_login = last_login;
         this.created = created;
@@ -70,14 +66,6 @@ public class User {
         this.email = email;
     }
 
-    public String get_v() {
-        return _v;
-    }
-
-    public void set_v(String _v) {
-        this._v = _v;
-    }
-
     public boolean isActivated() {
         return activated;
     }
@@ -100,5 +88,13 @@ public class User {
 
     public void setCreated(String created) {
         this.created = created;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

@@ -94,17 +94,24 @@ public class JSONParseUtil {
         return availability;
     }
 
-    public static User parseUser(JSONObject response) {
-        ObjectMapper mapper = null;
-        User user = null;
-        try {
-            mapper = new ObjectMapper();
-            mapper.configure(DeserializationFeature.UNWRAP_ROOT_VALUE, true);
-            user = mapper.readValue(response.toString(), User.class);
 
-        } catch (IOException e) {
+    public static User parseUser(JSONObject response){
+        User user = new User();
+
+        try {
+            JSONObject root = response.getJSONObject("user");
+            user.set_id(root.getString("_id"));
+            user.setType(root.getString("type"));
+            user.setPassword(root.getString("password"));
+            user.setEmail(root.getString("email"));
+            user.setActivated(root.getBoolean("activated"));
+            user.setLast_login(root.getString("last_login"));
+            user.setCreated(root.getString("created"));
+            user.setToken(response.getString("token"));
+        } catch (JSONException e) {
             e.printStackTrace();
         }
+
         return user;
     }
 }

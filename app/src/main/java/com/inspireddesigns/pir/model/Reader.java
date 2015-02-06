@@ -6,7 +6,6 @@ import java.util.Map;
  * Created by Brad Siegel on 1/15/15.
  */
 public class Reader {
-    //TODO create the rest of this class
     private String _id;
     private String parent;
     private String first_name;

@@ -18,11 +18,14 @@
         android:theme="@style/CustomAppTheme" >
         <activity
             android:name="com.inspireddesigns.pir.activity.home.HomeActivity"
-            android:label="@string/app_name" >
-        </activity>
+            android:label="@string/app_name" />
         <activity
             android:name="com.inspireddesigns.pir.activity.home.ParentActivity"
             android:label="@string/title_activity_parent" >
+        </activity>
+        <activity
+            android:name="com.inspireddesigns.pir.activity.home.LoginActivity"
+            android:label="@string/title_activity_login" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
