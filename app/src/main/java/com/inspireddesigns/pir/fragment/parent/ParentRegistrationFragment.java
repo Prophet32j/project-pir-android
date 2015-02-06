@@ -2,6 +2,7 @@ package com.inspireddesigns.pir.fragment.parent;
 
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.inspireddesigns.pir.R;
+import com.inspireddesigns.pir.activity.home.ParentActivity;
 import com.inspireddesigns.pir.application.ApplicationConstants;
 import com.inspireddesigns.pir.application.ApplicationController;
 import com.inspireddesigns.pir.application.PIRDatabaseHelper;
@@ -45,7 +47,6 @@ public class ParentRegistrationFragment extends PIRBaseFragment {
     private EditText mEditTextPhoneNumber;
     private Button mRegisterButton;
     private ProgressDialog dialog;
-    private ProgressBar progressBar;
 
 
     private static final String PARAM_EMAIL = "email";
@@ -86,12 +87,10 @@ public class ParentRegistrationFragment extends PIRBaseFragment {
         mEditTextPhoneNumber = (EditText) view.findViewById(R.id.editTextPhone);
         mRegisterButton = (Button) view.findViewById(R.id.registerButton);
         dialog = new ProgressDialog(getActivity());
-        progressBar = (ProgressBar)view.findViewById(R.id.progressBar);
 
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progressBar.setVisibility(View.VISIBLE);
                 executePostRequest();
                 dialog.setMessage(getResources().getString(R.string.loading));
                 dialog.show();
@@ -127,11 +126,9 @@ public class ParentRegistrationFragment extends PIRBaseFragment {
                 mParent = JSONParseUtil.parseParent(response);
                 PIRDatabaseHelper.getInstance(getActivity()).saveParent(mParent);
 
-                progressBar.setVisibility(View.GONE);
-
                 //registration successful, send parent to dashboard
-                ParentDashboardFragment fragment = ParentDashboardFragment.newInstance();
-                getFragmentManager().beginTransaction().replace(R.id.content, fragment).disallowAddToBackStack().commitAllowingStateLoss();
+                Intent intent = new Intent(getActivity(), ParentActivity.class);
+                startActivity(intent);
 
                 Log.i(ApplicationController.TAG, "Parent: " + mParent.getFirst_name() + " " + mParent.getLast_name());
                 Log.i(ApplicationController.TAG, "Response from POST parent" + response.toString());
@@ -142,7 +139,6 @@ public class ParentRegistrationFragment extends PIRBaseFragment {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        progressBar.setVisibility(View.GONE);
                         Log.i(ApplicationController.TAG, "Error with Volley response: Error code: " + error.networkResponse.statusCode);
                         if (dialog.isShowing()) {
                             dialog.dismiss();

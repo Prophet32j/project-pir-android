@@ -16,6 +16,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.inspireddesigns.pir.R;
 import com.inspireddesigns.pir.application.ApplicationConstants;
 import com.inspireddesigns.pir.application.ApplicationController;
+import com.inspireddesigns.pir.application.PIRDatabaseHelper;
 import com.inspireddesigns.pir.fragment.home.PIRBaseFragment;
 import com.inspireddesigns.pir.model.Parent;
 import com.inspireddesigns.pir.util.JSONParseUtil;
@@ -28,10 +29,7 @@ import org.json.JSONObject;
 public class ParentDashboardFragment extends PIRBaseFragment {
 
     private View view;
-    private Parent parent;
-    private int parentId;
-    private String queryString;
-    private TextView textViewParentId;
+    private Parent mParent;
 
 
     public ParentDashboardFragment() {
@@ -52,13 +50,9 @@ public class ParentDashboardFragment extends PIRBaseFragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_parent_dashboard, container, false);
 
-        String parentQueryPrefix = getResources().getString(R.string.query_parent_request_prefix);
+        mParent = PIRDatabaseHelper.getInstance(getActivity()).getParent();
 
-        queryString = parentQueryPrefix + parentId;
-
-        textViewParentId = (TextView)view.findViewById(R.id.parentId);
-
-        executeParentRequest();
+        Log.i(ApplicationController.TAG, "ParentDashboardFragment : getting parent from DB: " + mParent.getFirst_name() + " " + mParent.getLast_name());
 
         return view;
     }
@@ -68,23 +62,4 @@ public class ParentDashboardFragment extends PIRBaseFragment {
         super.onSaveInstanceState(outState);
     }
 
-    private void executeParentRequest() {
-        Log.i(ApplicationController.TAG, "executing parent GET request");
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, queryString, null, new Response.Listener<JSONObject>() {
-
-            @Override
-            public void onResponse(JSONObject response) {
-                Log.i(ApplicationController.TAG, "onResponse: parent JSON response received");
-                parent = JSONParseUtil.parseParent(response);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e(ApplicationController.TAG, "onErrorResponse: error when making parent GET request");
-                //TODO handle error here
-            }
-        });
-
-        ApplicationController.getInstance().addToRequestQueue(request);
-    }
 }

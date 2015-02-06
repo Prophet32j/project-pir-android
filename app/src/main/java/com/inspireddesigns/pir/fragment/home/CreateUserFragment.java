@@ -104,6 +104,7 @@ public class CreateUserFragment extends PIRBaseFragment {
                         Log.d(ApplicationController.TAG, "Response from POST User: " + response.toString());
 
                         //TODO notify user to confirm email address before being able to login
+                        getFragmentManager().beginTransaction().replace(R.id.content, LoginFragment.newInstance()).commitAllowingStateLoss();
                     }
 
                 },

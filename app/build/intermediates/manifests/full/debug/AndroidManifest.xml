@@ -21,11 +21,13 @@
             android:label="@string/app_name" />
         <activity
             android:name="com.inspireddesigns.pir.activity.home.ParentActivity"
-            android:label="@string/title_activity_parent" >
-        </activity>
+            android:label="@string/title_activity_parent" />
         <activity
             android:name="com.inspireddesigns.pir.activity.home.LoginActivity"
-            android:label="@string/title_activity_login" >
+            android:label="@string/title_activity_login" />
+        <activity
+            android:name="com.inspireddesigns.pir.activity.home.CreateUserActivity"
+            android:label="@string/title_activity_create_user_fragment" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

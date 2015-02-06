@@ -50,7 +50,7 @@
     <string name="hello_world">Hello world!</string>
 
     <!-- Request queries -->
-    <string name="query_parent_request_prefix">/parents?id=</string>
+    <string name="query_parent_request_prefix">/parents/</string>
 
     <string-array name="user_type_choices">
         <item>Volunteer</item>
@@ -58,5 +58,6 @@
     </string-array>
 
     <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_create_user_fragment">CreateUserFragment</string>
 
 </resources>

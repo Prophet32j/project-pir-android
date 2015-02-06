@@ -12,15 +12,16 @@
         android:theme="@style/CustomAppTheme">
         <activity
             android:name=".activity.home.HomeActivity"
-            android:label="@string/app_name"></activity>
+            android:label="@string/app_name" />
         <activity
             android:name=".activity.home.ParentActivity"
-            android:label="@string/title_activity_parent">
-
-        </activity>
+            android:label="@string/title_activity_parent"></activity>
         <activity
             android:name=".activity.home.LoginActivity"
-            android:label="@string/title_activity_login">
+            android:label="@string/title_activity_login"></activity>
+        <activity
+            android:name=".activity.home.CreateUserActivity"
+            android:label="@string/title_activity_create_user_fragment">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,6 +1,7 @@
 package com.inspireddesigns.pir.fragment.home;
 
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.util.Log;
@@ -39,6 +40,7 @@ public class LoginFragment extends PIRBaseFragment {
     private EditText mEmail;
     private EditText mPassword;
     private Button mLoginButton;
+    private ProgressDialog dialog;
 
     private static final String PARAM_EMAIL = "email";
     private static final String PARAM_PASSWORD = "password";
@@ -72,6 +74,7 @@ public class LoginFragment extends PIRBaseFragment {
                 executePostRequest();
             }
         });
+        dialog = new ProgressDialog(getActivity());
 
         return mView;
     }
@@ -89,17 +92,27 @@ public class LoginFragment extends PIRBaseFragment {
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, ApplicationConstants.LOGIN_API_URL, params, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+                if (dialog.isShowing()) {
+                    dialog.dismiss();
+                }
                 Log.i(ApplicationController.TAG, "Response from login. Should be token: " + response.toString());
                 mUser = JSONParseUtil.parseUser(response);
 
                 Log.i(ApplicationController.TAG, "LoginFragment >> Saving token to DB >> token: " + mUser.getToken());
 
                 PIRDatabaseHelper.getInstance(getActivity()).saveToken(mUser.getToken(), mUser.getEmail());
+
                 goToRegistration();
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                if (dialog.isShowing()) {
+                    dialog.dismiss();
+                }
+
+                //TODO determine if error is because account is not activated
+                createErrorDialog(getResources().getString(R.string.error_account_not_created)).show();
                 Log.e(ApplicationController.TAG, "Login failed. Error code: " + error.networkResponse.statusCode);
 
 //                if (PIRDatabaseHelper.getInstance(getActivity()).getParent() == null) {
@@ -115,17 +128,16 @@ public class LoginFragment extends PIRBaseFragment {
     //TODO check if it is there first login/registration has been complete
     private void goToRegistration() {
 
-            switch (mUser.getType().charAt(0)) {
-                case 'p':
-                    ParentRegistrationFragment fragment = ParentRegistrationFragment.newInstance(mUser.getEmail());
-                    getFragmentManager().beginTransaction().replace(R.id.content, fragment).disallowAddToBackStack().commitAllowingStateLoss();
-                    break;
-                case 'v':
-                    //TODO go to VolunteerRegistrationFragment
-                    break;
-            }
+        switch (mUser.getType().charAt(0)) {
+            case 'p':
+                ParentRegistrationFragment fragment = ParentRegistrationFragment.newInstance(mUser.getEmail());
+                getFragmentManager().beginTransaction().replace(R.id.content, fragment).disallowAddToBackStack().commitAllowingStateLoss();
+                break;
+            case 'v':
+                //TODO go to VolunteerRegistrationFragment
+                break;
         }
-
+    }
 
 
 }

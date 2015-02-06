@@ -1554,26 +1554,28 @@ containing a value of this type.
         public static final int abc_search_dropdown_item_icons_2line=0x7f030014;
         public static final int abc_search_view=0x7f030015;
         public static final int abc_simple_dropdown_hint=0x7f030016;
-        public static final int activity_login=0x7f030017;
-        public static final int activity_main=0x7f030018;
-        public static final int activity_parent=0x7f030019;
-        public static final int fragment_create_user=0x7f03001a;
-        public static final int fragment_login=0x7f03001b;
-        public static final int fragment_main=0x7f03001c;
-        public static final int fragment_manage_readers=0x7f03001d;
-        public static final int fragment_navigation_drawer=0x7f03001e;
-        public static final int fragment_parent_dashboard=0x7f03001f;
-        public static final int fragment_parent_registration=0x7f030020;
-        public static final int fragment_volunteer_registration=0x7f030021;
-        public static final int list_item_nav_drawer=0x7f030022;
-        public static final int support_simple_spinner_dropdown_item=0x7f030023;
-        public static final int toolbar=0x7f030024;
+        public static final int activity_create_user_fragment=0x7f030017;
+        public static final int activity_login=0x7f030018;
+        public static final int activity_main=0x7f030019;
+        public static final int activity_parent=0x7f03001a;
+        public static final int fragment_create_user=0x7f03001b;
+        public static final int fragment_login=0x7f03001c;
+        public static final int fragment_main=0x7f03001d;
+        public static final int fragment_manage_readers=0x7f03001e;
+        public static final int fragment_navigation_drawer=0x7f03001f;
+        public static final int fragment_parent_dashboard=0x7f030020;
+        public static final int fragment_parent_registration=0x7f030021;
+        public static final int fragment_volunteer_registration=0x7f030022;
+        public static final int list_item_nav_drawer=0x7f030023;
+        public static final int support_simple_spinner_dropdown_item=0x7f030024;
+        public static final int toolbar=0x7f030025;
     }
     public static final class menu {
         public static final int global=0x7f0d0000;
         public static final int main=0x7f0d0001;
-        public static final int menu_login=0x7f0d0002;
-        public static final int menu_parent=0x7f0d0003;
+        public static final int menu_create_user=0x7f0d0002;
+        public static final int menu_login=0x7f0d0003;
+        public static final int menu_parent=0x7f0d0004;
     }
     public static final class string {
         public static final int abc_action_bar_home_description=0x7f0b0000;
@@ -1604,13 +1606,14 @@ containing a value of this type.
         public static final int ok=0x7f0b0019;
         public static final int parent_identifier=0x7f0b001a;
         public static final int query_parent_request_prefix=0x7f0b001b;
-        public static final int title_activity_login=0x7f0b001c;
-        public static final int title_activity_parent=0x7f0b001d;
-        public static final int title_section1=0x7f0b001e;
-        public static final int title_section2=0x7f0b001f;
-        public static final int title_section3=0x7f0b0020;
-        public static final int volunteer=0x7f0b0021;
-        public static final int volunteer_identifier=0x7f0b0022;
+        public static final int title_activity_create_user_fragment=0x7f0b001c;
+        public static final int title_activity_login=0x7f0b001d;
+        public static final int title_activity_parent=0x7f0b001e;
+        public static final int title_section1=0x7f0b001f;
+        public static final int title_section2=0x7f0b0020;
+        public static final int title_section3=0x7f0b0021;
+        public static final int volunteer=0x7f0b0022;
+        public static final int volunteer_identifier=0x7f0b0023;
     }
     public static final class style {
         public static final int Base_TextAppearance_AppCompat=0x7f0c0000;
