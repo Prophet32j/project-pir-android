@@ -25,6 +25,7 @@ MERGED from com.android.support:appcompat-v7:21.0.2:16:5
 MERGED from com.android.support:support-v4:21.0.2:16:5
 MERGED from com.android.support:recyclerview-v7:21.0.2:17:5
 MERGED from com.android.support:support-v4:21.0.2:16:5
+MERGED from com.github.navasmdc:MaterialDesign:1.4:11:5
 	android:label
 		ADDED from AndroidManifest.xml:11:9
 	android:allowBackup
@@ -35,40 +36,40 @@ MERGED from com.android.support:support-v4:21.0.2:16:5
 		ADDED from AndroidManifest.xml:12:9
 	android:name
 		ADDED from AndroidManifest.xml:8:9
-activity#com.inspireddesigns.pir.activity.home.HomeActivity
+activity#io.migrant.pir.activity.home.ParentActivity
 ADDED from AndroidManifest.xml:13:9
 	android:label
 		ADDED from AndroidManifest.xml:15:13
 	android:name
 		ADDED from AndroidManifest.xml:14:13
-activity#com.inspireddesigns.pir.activity.home.ParentActivity
+activity#io.migrant.pir.activity.home.LoginActivity
 ADDED from AndroidManifest.xml:16:9
 	android:label
 		ADDED from AndroidManifest.xml:18:13
 	android:name
 		ADDED from AndroidManifest.xml:17:13
-activity#com.inspireddesigns.pir.activity.home.LoginActivity
-ADDED from AndroidManifest.xml:19:9
-	android:label
-		ADDED from AndroidManifest.xml:21:13
-	android:name
-		ADDED from AndroidManifest.xml:20:13
-activity#com.inspireddesigns.pir.activity.home.CreateUserActivity
-ADDED from AndroidManifest.xml:22:9
-	android:label
-		ADDED from AndroidManifest.xml:24:13
-	android:name
-		ADDED from AndroidManifest.xml:23:13
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from AndroidManifest.xml:25:13
+ADDED from AndroidManifest.xml:19:13
 action#android.intent.action.MAIN
-ADDED from AndroidManifest.xml:26:17
+ADDED from AndroidManifest.xml:20:17
 	android:name
-		ADDED from AndroidManifest.xml:26:25
+		ADDED from AndroidManifest.xml:20:25
 category#android.intent.category.LAUNCHER
-ADDED from AndroidManifest.xml:28:17
+ADDED from AndroidManifest.xml:22:17
 	android:name
-		ADDED from AndroidManifest.xml:28:27
+		ADDED from AndroidManifest.xml:22:27
+activity#io.migrant.pir.activity.home.MainActivity
+ADDED from AndroidManifest.xml:25:9
+	android:label
+		ADDED from AndroidManifest.xml:27:13
+	android:name
+		ADDED from AndroidManifest.xml:26:13
+activity#io.migrant.pir.activity.home.RegistrationActivity
+ADDED from AndroidManifest.xml:28:9
+	android:label
+		ADDED from AndroidManifest.xml:30:13
+	android:name
+		ADDED from AndroidManifest.xml:29:13
 uses-sdk
 INJECTED from AndroidManifest.xml:0:0 reason: use-sdk injection requested
 MERGED from com.android.support:support-v4:21.0.2:15:5
@@ -77,6 +78,7 @@ MERGED from com.android.support:appcompat-v7:21.0.2:15:5
 MERGED from com.android.support:support-v4:21.0.2:15:5
 MERGED from com.android.support:recyclerview-v7:21.0.2:15:5
 MERGED from com.android.support:support-v4:21.0.2:15:5
+MERGED from com.github.navasmdc:MaterialDesign:1.4:7:5
 	android:targetSdkVersion
 		INJECTED from AndroidManifest.xml:0:0
 		INJECTED from AndroidManifest.xml:0:0

@@ -1,10 +1,109 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.inspireddesigns.pir.fragment.volunteer.VolunteerRegistrationFragment">
+    tools:context="io.migrant.pir.fragment.volunteer.VolunteerRegistrationFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView">
 
-</FrameLayout>
+
+
+    </ScrollView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Email:"
+        android:id="@+id/label_email"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/textViewEmail"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/label_email"
+        android:layout_toEndOf="@+id/label_email" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="First Name:"
+        android:id="@+id/labelFirstName"
+        android:layout_alignBottom="@+id/editTextFirstName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/editTextFirstName"
+        android:layout_below="@+id/textViewEmail"
+        android:layout_toRightOf="@+id/labelFirstName"
+        android:layout_toEndOf="@+id/labelFirstName" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Last Name:"
+        android:id="@+id/labelLastName"
+        android:layout_alignBottom="@+id/editTextLastName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/editTextLastName"
+        android:layout_below="@+id/editTextFirstName"
+        android:layout_toRightOf="@+id/labelFirstName"
+        android:layout_toEndOf="@+id/labelFirstName" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Phone:"
+        android:id="@+id/labelPhone"
+        android:layout_marginTop="33dp"
+        android:layout_below="@+id/labelLastName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:ems="10"
+        android:id="@+id/editText"
+        android:layout_alignBottom="@+id/labelPhone"
+        android:layout_toRightOf="@+id/labelPhone"
+        android:layout_toEndOf="@+id/labelPhone" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Gender:"
+        android:id="@+id/labelGender"
+        android:layout_below="@+id/editText"
+        android:layout_toRightOf="@+id/scrollView"
+        android:layout_toEndOf="@+id/scrollView"
+        android:layout_marginTop="39dp" />
+
+
+</RelativeLayout>

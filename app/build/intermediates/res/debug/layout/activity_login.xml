@@ -1,14 +1,40 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.inspireddesigns.pir.activity.home.LoginActivity">
+    android:orientation="vertical"
+    android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+    android:background="#cc3333"
+    tools:context="io.migrant.pir.activity.home.LoginActivity">
 
-    <FrameLayout
-        android:id="@+id/content"
+
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </FrameLayout>
+        <fragment
+            android:name="io.migrant.pir.fragment.home.LoginFragment"
+            android:id="@+id/loginFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:layout="@layout/fragment_login"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"/>
 
-</RelativeLayout><!-- From: file:/Users/blsiege/PIR_2/project-pir-android/app/src/main/res/layout/activity_login.xml -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="50sp"
+            android:fontFamily="sans-serif-thin"
+            android:text="Reading Mentor"
+            android:id="@+id/textView"
+            android:textColor="#FFFFFF"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="89dp" />
+    </RelativeLayout>
+
+</LinearLayout><!-- From: file:/Users/blsiege/PIR_2/project-pir-android/app/src/main/res/layout/activity_login.xml -->

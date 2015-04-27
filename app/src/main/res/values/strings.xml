@@ -53,11 +53,22 @@
     <string name="query_parent_request_prefix">/parents/</string>
 
     <string-array name="user_type_choices">
-        <item>Volunteer</item>
         <item>Parent</item>
+        <item>Volunteer</item>
     </string-array>
 
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_create_user_fragment">CreateUserFragment</string>
+    <string name="title_activity_drawer">DrawerActivity</string>
+    <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_registration">RegistrationActivity</string>
+    <string name="title_activity_testact">testact</string>
+    <string name="new_user_registration">New User Registration</string>
+    <string name="logout_text">Logout</string>
+    <string name="failed_logout">Logout failed</string>
+    <string name="logout_confirmation">Are you sure you want to logout?</string>
+    <string name="logout_dialog_positive">Yes</string>
+    <string name="logout_dialog_negative">Cancel</string>
 
 </resources>

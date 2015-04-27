@@ -51,11 +51,11 @@
         <dex dex="/Users/blsiege/PIR_2/project-pir-android/app/build/intermediates/pre-dexed/debug/classes-2ae9738a9bc31fde0b48c3a92ec341459c4ae1e9.jar" />
     </item>
     <item
-        jar="/Users/blsiege/.gradle/caches/modules-2/files-2.1/com.mcxiaoke.volley/library/1.0.10/8d62b91f5ccb6f7f872313191c016c03bb61a792/library-1.0.10.jar"
+        jar="/Users/blsiege/PIR_2/project-pir-android/app/build/intermediates/exploded-aar/com.github.navasmdc/MaterialDesign/1.4/classes.jar"
         jumboMode="false"
         revision="19.1.0"
-        sha1="8d62b91f5ccb6f7f872313191c016c03bb61a792">
-        <dex dex="/Users/blsiege/PIR_2/project-pir-android/app/build/intermediates/pre-dexed/debug/library-1.0.10-cd82388c7a7af47131541cf81431a887e333e22c.jar" />
+        sha1="87405405e403de68f4057757b8a2e8de02bd65d0">
+        <dex dex="/Users/blsiege/PIR_2/project-pir-android/app/build/intermediates/pre-dexed/debug/classes-bc9b894076350258514624509930e8a91edbc6ce.jar" />
     </item>
     <item
         jar="/Users/blsiege/PIR_2/project-pir-android/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/21.0.2/classes.jar"
@@ -70,6 +70,13 @@
         revision="19.1.0"
         sha1="962e8b12569c56dbdcf8367eb4eac8bb129cd18f">
         <dex dex="/Users/blsiege/PIR_2/project-pir-android/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.2-c684a4376520b76327354b1c660e89302ebb0519.jar" />
+    </item>
+    <item
+        jar="/Users/blsiege/.gradle/caches/modules-2/files-2.1/com.mcxiaoke.volley/library/1.0.15/9093a362d18c5f81f58e49d86dece57d9b6e1cb7/library-1.0.15.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="9093a362d18c5f81f58e49d86dece57d9b6e1cb7">
+        <dex dex="/Users/blsiege/PIR_2/project-pir-android/app/build/intermediates/pre-dexed/debug/library-1.0.15-2789d5e963bcba0bdd6fa5cf13268fe0020d8e56.jar" />
     </item>
 
 </items>

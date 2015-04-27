@@ -1,59 +1,123 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.inspireddesigns.pir.fragment.home.LoginFragment"
+    tools:context="io.migrant.pir.fragment.home.LoginFragment"
     android:layout_margin="10dp">
 
-    <!-- TODO: Update blank fragment layout -->
+--><!-- TODO: Update blank fragment layout -->
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:id="@+id/editTextEmail"
-        android:layout_marginTop="153dp"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/textViewEmail"
-        android:layout_toEndOf="@+id/textViewEmail" />
 
-    <TextView
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context="io.migrant.pir.fragment.home.LoginFragment"
+    android:layout_margin="10dp"
+    >
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Password:"
-        android:id="@+id/textViewPassword"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:orientation="vertical"
+        android:id="@+id/linearLayout">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Email:"
-        android:id="@+id/textViewEmail"
-        android:layout_alignBaseline="@+id/editTextEmail"
-        android:layout_alignBottom="@+id/editTextEmail"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
 
-    <EditText
+            android:layout_height="wrap_content"
+            card_view:cardCornerRadius="4dp">
+
+            <RelativeLayout
+                android:padding="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/credentialsLayout">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/editTextEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textEmailAddress"
+                            android:ems="10"
+                            android:hint="User ID" />
+
+                        <EditText
+                            android:id="@+id/editTextPassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/editTextEmail"
+                            android:inputType="textPassword"
+                            android:hint="Password"
+                            android:ems="10" />
+
+                        <Button
+                            android:layout_marginTop="5dp"
+                            android:id="@+id/buttonLogin"
+                            android:layout_width="match_parent"
+                            android:text="Login"
+                            style="@style/Base.Widget.AppCompat.ActionButton"
+                            android:layout_below="@+id/editTextPassword"
+                            android:layout_height="40dp"
+                            android:textColor="@android:color/white"
+                            android:background="@android:color/holo_blue_dark" />
+
+                        <Button
+                            android:id="@+id/signUpButton"
+                            android:layout_marginTop="5dp"
+                            android:layout_width="match_parent"
+                            android:textColor="@android:color/white"
+                            android:layout_height="40dp"
+                            android:text="Sign up"
+                            android:background="@android:color/holo_blue_dark"
+                            style="@style/Base.Widget.AppCompat.ActionButton"
+                            android:layout_below="@id/buttonLogin" />
+
+                    </RelativeLayout>
+                </FrameLayout>
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/editTextPassword"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/textViewPassword"
-        android:layout_toEndOf="@+id/textViewPassword" />
+        android:layout_below="@id/linearLayout"
+        android:layout_alignEnd="@+id/linearLayout">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="false"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/relativeLayout">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Login"
-        android:id="@+id/buttonLogin"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView3"
+                android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif-thin"
+                android:text="Copyright 2015 Migrant LLC"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
+
+        </RelativeLayout>
+    </FrameLayout>
+
+
+
 </RelativeLayout>
 <!-- From: file:/Users/blsiege/PIR_2/project-pir-android/app/src/main/res/layout/fragment_login.xml -->
